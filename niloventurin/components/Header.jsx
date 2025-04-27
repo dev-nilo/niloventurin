@@ -1,9 +1,12 @@
+"use client";
+
 import { Code } from "lucide-react";
-import React from "react";
+import ButtonContactMe from "./buttons/ButtonContactMe";
+import ButtonDownloadCV from "./buttons/ButtonDownloadCV";
 
 const Header = () => {
   return (
-    <section className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto px-4 py-16">
+    <section className="flex flex-col items-center justify-center text-center min-h-[calc(100vh-6rem)] max-w-5xl mx-auto px-4">
       {/* Avatar */}
       <div className="mb-8">
         <img
@@ -35,26 +38,10 @@ const Header = () => {
           </span>
         </p>
 
-        <div className="relative bg-white dark:bg-card rounded-xl shadow-md hover:shadow-lg border border-border transition-all p-6 max-w-xs hover:-translate-y-1">
-          {/* Título */}
-          <h3 className="text-lg font-semibold text-foreground mb-2">
-            Languages
-          </h3>
-
-          {/* Descrição */}
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            HTML, CSS, JavaScript
-            <br />
-            React Js, Next Js
-          </p>
-
-          {/* Sombra lateral especial */}
-          <div
-            className="absolute inset-0 rounded-xl pointer-events-none"
-            style={{
-              boxShadow: "4px 4px 0 black",
-            }}
-          ></div>
+        {/* Action Buttons */}
+        <div className="flex flex-wrap justify-center items-center gap-4 mt-8">
+          <ButtonContactMe />
+          <ButtonDownloadCV />
         </div>
       </header>
     </section>

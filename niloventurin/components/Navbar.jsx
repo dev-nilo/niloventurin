@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Sun, Moon, Menu, X } from "lucide-react";
-import ButtonContactMe from "./ButtonContactMe";
+import ButtonContactMe from "./buttons/ButtonContactMe";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
