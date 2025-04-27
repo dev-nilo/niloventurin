@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Sun, Moon, Menu, X } from "lucide-react";
+import ButtonContactMe from "./ButtonContactMe";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,12 +72,10 @@ const Navbar = () => {
 
       {/* Actions */}
       <div className="flex items-center gap-4">
-        <a
-          href="#contact"
-          className="hidden lg:flex items-center gap-3 px-8 py-2 border border-border rounded-full transition-colors hover:bg-accent dark:hover:bg-accent hover:text-lime-500"
-        >
-          Contact me
-        </a>
+        {/* Contact Me Button - Desktop */}
+        <div className="hidden lg:flex">
+          <ButtonContactMe />
+        </div>
 
         {/* Dark Mode Toggle */}
         <button
@@ -90,7 +89,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className="flex md:hidden p-2 rounded-full transition-colors hover:bg-accent dark:hover:bg-accent"
+          className="flex md:hidden p-2 rounded-full transition-colors hover:bg-accent dark:hover:bg-accent hover:text-lime-500"
           aria-label="Toggle Menu"
           aria-expanded={isMenuOpen}
         >
@@ -100,7 +99,7 @@ const Navbar = () => {
 
       {/* Mobile Nav */}
       {isMenuOpen && (
-        <div className="absolute top-20 right-5 flex flex-col gap-6 p-6 bg-background rounded-xl shadow-lg md:hidden animate-fade-in">
+        <div className="absolute top-20 right-5 flex flex-col gap-6 p-6 bg-background dark:bg-card rounded-xl shadow-lg md:hidden animate-fade-in z-50">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -111,12 +110,9 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="flex items-center justify-center px-6 py-3 border border-border rounded-full transition-colors hover:bg-accent dark:hover:bg-accent hover:text-lime-500"
-          >
-            Contact me
-          </a>
+
+          {/* Contact Me Button - Mobile */}
+          <ButtonContactMe isMobile className="mt-4" />
         </div>
       )}
     </nav>
