@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+* {
+  font-family: "Outfit", sans-serif;
+}
+
+@layer base {
+  :root {
+    /* Light mode */
+    --background: 0 0% 100%; /* zinc-50 */
+    --foreground: 240 5% 10%; /* zinc-950 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 5% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 5% 10%;
+
+    --primary: 88 80% 48%; /* lime-500 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 96%; /* zinc-100 */
+    --secondary-foreground: 240 5% 10%;
+
+    --muted: 240 5% 95%; /* zinc-100 */
+    --muted-foreground: 240 5% 50%;
+
+    --accent: 240 5% 96%;
+    --accent-foreground: 240 5% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 5% 90%;
+    --input: 240 5% 90%;
+    --ring: 88 80% 48%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark mode */
+    --background: 240 5% 10%; /* zinc-950 */
+    --foreground: 0 0% 100%;
+
+    --card: 240 5% 16%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 5% 16%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 88 80% 60%; /* lime-400 */
+    --primary-foreground: 240 5% 10%;
+
+    --secondary: 240 5% 20%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 5% 20%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 240 5% 20%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 5% 30%;
+    --input: 240 5% 30%;
+    --ring: 88 80% 60%;
+  }
+
+  body {
+    font-family: "Outfit", sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    transition: background-color 0.3s, color 0.3s;
+  }
+}
