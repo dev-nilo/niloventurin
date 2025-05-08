@@ -1,8 +1,8 @@
 "use client";
 
 import { Code } from "lucide-react";
-import ButtonContactMe from "./buttons/ButtonContactMe";
-import ButtonDownloadCV from "./buttons/ButtonDownloadCV";
+import ButtonContactMe from "./ui/ButtonContactMe";
+import ButtonDownloadCV from "./ui/ButtonDownloadCV";
 
 const Header = () => {
   return (

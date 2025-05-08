@@ -1,21 +1,17 @@
-import React from "react";
-
-const Contact = () => {
+export default function Contact() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-4xl font-bold mb-4">Contact Me</h1>
-      <p className="text-lg text-center max-w-2xl">
-        If you have any questions or would like to get in touch, feel free to
-        reach out!
+    <section className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+      <h2 className="text-4xl font-extrabold mb-6">Contato</h2>
+      <p className="mb-8 text-lg max-w-xl text-muted-foreground">
+        Entre em contato comigo para discutir projetos, ideias ou apenas dizer
+        oi!
       </p>
-      <div className="mt-8">
-        <a href=""></a>
-        <button className="bg-lime-500 text-white px-4 py-2 rounded">
-          Email Me
-        </button>
-      </div>
-    </div>
+      <a
+        href="mailto:seuemail@example.com"
+        className="inline-block bg-lime-500 hover:bg-lime-600 text-white font-semibold px-6 py-3 rounded-full transition-colors"
+      >
+        Enviar E-mail
+      </a>
+    </section>
   );
-};
-
-export default Contact;
+}
