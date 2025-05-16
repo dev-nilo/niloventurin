@@ -29,13 +29,12 @@ const ButtonDownloadCV = ({ className = "" }) => {
       className={`relative flex items-center justify-center gap-3 px-8 py-3
         ${
           darkMode
-            ? "bg-background text-foreground"
-            : "bg-foreground text-background"
+            ? "bg-background text-lime-500"
+            : "bg-foreground text-lime-500"
         }
         border border-border rounded-xl
         shadow-md hover:shadow-lg
         transition-all hover:-translate-y-1
-        hover:text-lime-500
         ${className}`}
     >
       Download CV
@@ -43,8 +42,8 @@ const ButtonDownloadCV = ({ className = "" }) => {
         className="absolute inset-0 rounded-xl pointer-events-none"
         style={{
           boxShadow: darkMode
-            ? "4px 4px 0 #d4d4d8" // sombra clara no modo dark
-            : "4px 4px 0 black", // sombra preta no modo light
+            ? "4px 4px 0 #7ccf00" // sombra clara no modo dark
+            : "4px 4px 0 #7ccf00", // sombra preta no modo light
         }}
       ></div>
     </a>

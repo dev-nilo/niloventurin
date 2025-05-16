@@ -28,7 +28,7 @@ const ButtonContactMe = ({ className = "" }) => {
     <a
       href="#contact"
       className={`relative flex items-center justify-center gap-3 px-8 py-3 
-        bg-background dark:bg-card 
+        bg-background
         border border-border rounded-xl 
         shadow-md hover:shadow-lg 
         transition-all hover:-translate-y-1 
