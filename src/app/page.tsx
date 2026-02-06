@@ -36,7 +36,7 @@ export default function Home() {
                 className="bg-white dark:bg-zinc-950 h-screen w-full text-zinc-900 dark:text-zinc-100 transition-colors duration-300 overflow-hidden flex flex-col"
             >
 
-                <TopBar onLogoClick={() => setCurrentSection(0)} />
+                {/* <TopBar onLogoClick={() => setCurrentSection(0)} /> */}
 
                 <main className="flex-1 relative w-full h-full overflow-hidden pb-24">
                     <AnimatePresence mode="wait">
