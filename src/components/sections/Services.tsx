@@ -13,7 +13,7 @@ export const Services = () => (
       </p>
     </div>
 
-    <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-6 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
+    <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-6 md:gap-8 py-8 -mx-6 px-6 no-scrollbar">
       {SERVICES_DATA.map((service, index) => (
         <NeoCard
           key={index}

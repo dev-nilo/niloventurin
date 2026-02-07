@@ -30,7 +30,7 @@ export const Contact = () => (
 
     <div className="relative md:absolute md:bottom-24 lg:bottom-10 left-0 w-full flex flex-col items-center gap-4 mt-12 md:mt-0">
       <p className="text-zinc-500 dark:text-zinc-500 text-sm">
-        © {new Date().getFullYear()} Nilo Venturin. Built with React & Tailwind.
+        © {new Date().getFullYear()} Nilo Venturin.
       </p>
     </div>
   </div>

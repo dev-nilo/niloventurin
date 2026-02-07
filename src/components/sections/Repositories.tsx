@@ -20,7 +20,7 @@ export const Repositories = () => (
       </NeoButtonOutline>
     </div>
 
-    <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
+    <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 py-8 -mx-6 px-6 no-scrollbar">
       {REPOS_DATA.map((repo, index) => (
         <NeoCard
           key={index}
