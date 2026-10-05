@@ -1,6 +1,6 @@
 import { Layout, ExternalLink } from "lucide-react";
 import { Github } from "../ui/BrandIcons";
-import { CONTACT, PROJECTS_DATA } from "../../data";
+import { PROFILE } from "../../content/profile";
 import { NeoCard } from "../ui/NeoCard";
 import { NeoButtonOutline } from "../ui/NeoButton";
 
@@ -15,13 +15,13 @@ export const Projects = () => (
           Personal projects deployed on Vercel. Source code is on my GitHub.
         </p>
       </div>
-      <NeoButtonOutline href={CONTACT.github} className="shrink-0">
+      <NeoButtonOutline href={PROFILE.contact.github} className="shrink-0">
         <Github size={18} /> View GitHub Profile
       </NeoButtonOutline>
     </div>
 
     <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 py-8 -mx-6 px-6 no-scrollbar">
-      {PROJECTS_DATA.map((project) => (
+      {PROFILE.projects.map((project) => (
         <NeoCard
           key={project.name}
           className="shrink-0 w-[85vw] md:w-auto snap-center group hover:border-cyan-500 transition-colors flex flex-col"

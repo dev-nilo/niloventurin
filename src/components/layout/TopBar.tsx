@@ -1,3 +1,5 @@
+import { PROFILE } from "../../content/profile";
+
 export const TopBar = ({ onLogoClick }: { onLogoClick: () => void }) => (
     <div className="fixed top-0 left-0 w-full z-40 px-6 py-6 flex items-center justify-between pointer-events-none">
         <button
@@ -6,7 +8,7 @@ export const TopBar = ({ onLogoClick }: { onLogoClick: () => void }) => (
         >
 
             <span className="text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-                Nilo Venturin
+                {PROFILE.name}
             </span>
         </button>
     </div>

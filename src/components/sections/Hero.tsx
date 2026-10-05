@@ -1,6 +1,6 @@
 import { Mail, Download } from "lucide-react";
 import { NeoButton, NeoButtonOutline } from "../ui/NeoButton";
-import { CONTACT } from "../../data";
+import { PROFILE } from "../../content/profile";
 
 export const Hero = () => (
   <div className="flex flex-col items-center justify-center min-h-full max-w-4xl mx-auto px-4 text-center py-12 md:py-20">
@@ -11,7 +11,7 @@ export const Hero = () => (
       <h2 className="text-lg sm:text-xl md:text-2xl font-medium text-zinc-600 dark:text-zinc-400">
         Hi, I'm{" "}
         <span className="font-bold text-zinc-900 dark:text-zinc-100">
-          Nilo Venturin
+          {PROFILE.name}
         </span>
       </h2>
       <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-zinc-900 dark:text-zinc-100 leading-none">
@@ -21,50 +21,35 @@ export const Hero = () => (
         </span>
       </h1>
       <p className="max-w-2xl mx-auto text-zinc-600 dark:text-zinc-400 text-base sm:text-lg md:text-xl leading-relaxed">
-        I build web apps in
-        <strong className="text-zinc-900 dark:text-zinc-100">
-          {" "}
-          TypeScript, React and Next.js
-        </strong>{" "}
-        and APIs in
-        <strong className="text-zinc-900 dark:text-zinc-100">
-          {" "}
-          Node.js and Java/Spring Boot
-        </strong>
-        , with access, auditability and tests in mind.
+        {PROFILE.tagline.map((segment) =>
+          segment.strong ? (
+            <strong
+              key={segment.text}
+              className="text-zinc-900 dark:text-zinc-100"
+            >
+              {segment.text}
+            </strong>
+          ) : (
+            segment.text
+          ),
+        )}
       </p>
       <p className="text-sm text-zinc-500">
-        Vitória, Espírito Santo, Brazil · Remote
+        {PROFILE.location} · {PROFILE.workMode}
       </p>
     </div>
 
     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-      <NeoButton href={`mailto:${CONTACT.email}`}>
+      <NeoButton href={`mailto:${PROFILE.contact.email}`}>
         <Mail size={18} /> Get in Touch
       </NeoButton>
-      <NeoButtonOutline href="/cv.pdf" download>
+      <NeoButtonOutline href={PROFILE.contact.cvPath} download>
         <Download size={18} /> Download CV
       </NeoButtonOutline>
     </div>
 
     <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-wrap gap-4 sm:gap-6 text-zinc-400 dark:text-zinc-600 justify-center">
-      {[
-        "ts",
-        "js",
-        "react",
-        "nextjs",
-        "angular",
-        "nodejs",
-        "java",
-        "spring",
-        "postgres",
-        "supabase",
-        "tailwind",
-        "docker",
-        "githubactions",
-        "vercel",
-        "aws",
-      ].map((skill) => (
+      {PROFILE.skillIcons.map((skill) => (
         <img
           key={skill}
           src={`https://skillicons.dev/icons?i=${skill}`}

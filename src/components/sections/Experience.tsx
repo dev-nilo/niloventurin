@@ -1,4 +1,4 @@
-import { EXPERIENCE_DATA } from "../../data";
+import { PROFILE } from "../../content/profile";
 import { NeoCard } from "../ui/NeoCard";
 
 export const Experience = () => (
@@ -13,7 +13,7 @@ export const Experience = () => (
     </div>
 
     <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 gap-6 md:gap-8 py-8 -mx-6 px-6 no-scrollbar">
-      {EXPERIENCE_DATA.map((job) => (
+      {PROFILE.experience.map((job) => (
         <NeoCard
           key={job.company}
           className="shrink-0 w-[85vw] md:w-auto snap-center flex flex-col gap-3 h-full"
