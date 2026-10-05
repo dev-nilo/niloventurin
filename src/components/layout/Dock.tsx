@@ -66,11 +66,11 @@ const DockIcon = ({
 export const Dock = ({
   items,
   activeIndex,
-  setActiveIndex,
+  onSelect,
 }: {
   items: NavItem[];
   activeIndex: number;
-  setActiveIndex: (index: number) => void;
+  onSelect: (index: number) => void;
 }) => {
   const mouseX = useMotionValue(Infinity);
   const { theme, toggleTheme } = useTheme();
@@ -86,7 +86,7 @@ export const Dock = ({
           <DockIcon
             key={item.id}
             mouseX={mouseX}
-            onClick={() => setActiveIndex(index)}
+            onClick={() => onSelect(index)}
             isActive={activeIndex === index}
           >
             <item.icon className="w-5 h-5" />

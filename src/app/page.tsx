@@ -10,7 +10,8 @@ import {
 } from "lucide-react";
 
 import { ThemeProvider } from "../context/ThemeContext";
-import { useNavigationController } from "../hooks/useNavigationController";
+import { useSectionNavigator } from "../navigation/useSectionNavigator";
+import { useNavigationGestures } from "../navigation/useNavigationGestures";
 import { TopBar } from "../components/layout/TopBar";
 import { Dock } from "../components/layout/Dock";
 import { Hero } from "../components/sections/Hero";
@@ -44,9 +45,9 @@ const SECTIONS_CONFIG: NavItem[] = [
 ];
 
 export default function Home() {
-  const { currentSection, setCurrentSection } = useNavigationController(
-    SECTIONS_CONFIG.length,
-  );
+  const sections = useSectionNavigator(SECTIONS_CONFIG.length);
+  useNavigationGestures(sections);
+  const currentSection = sections.index;
 
   return (
     <ThemeProvider>
@@ -76,7 +77,7 @@ export default function Home() {
         <Dock
           items={SECTIONS_CONFIG}
           activeIndex={currentSection}
-          setActiveIndex={setCurrentSection}
+          onSelect={sections.goTo}
         />
       </div>
     </ThemeProvider>
