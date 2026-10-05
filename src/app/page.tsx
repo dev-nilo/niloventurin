@@ -15,8 +15,8 @@ import { TopBar } from "../components/layout/TopBar";
 import { Dock } from "../components/layout/Dock";
 import { Hero } from "../components/sections/Hero";
 import { About } from "../components/sections/About";
-import { Services } from "../components/sections/Services";
-import { Repositories } from "../components/sections/Repositories";
+import { Experience } from "../components/sections/Experience";
+import { Projects } from "../components/sections/Projects";
 import { Contact } from "../components/sections/Contact";
 import { NavItem } from "../types";
 
@@ -24,15 +24,15 @@ const SECTIONS_CONFIG: NavItem[] = [
   { id: "home", label: "Home", component: <Hero />, icon: HomeIcon },
   { id: "about", label: "About", component: <About />, icon: User },
   {
-    id: "services",
-    label: "Services",
-    component: <Services />,
+    id: "experience",
+    label: "Experience",
+    component: <Experience />,
     icon: Briefcase,
   },
   {
-    id: "repositories",
-    label: "Repositories",
-    component: <Repositories />,
+    id: "projects",
+    label: "Projects",
+    component: <Projects />,
     icon: FolderGit2,
   },
   {

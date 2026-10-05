@@ -15,18 +15,25 @@ export interface NavItem {
     icon: LucideIcon;
 }
 
-export interface ServiceItem {
-    title: string;
-    description: string;
-    icon: LucideIcon;
+export interface ExperienceItem {
+    company: string;
+    role: string;
+    period: string;
+    location: string;
+    highlights: string[];
 }
 
-export interface RepositoryItem {
+export interface ProjectItem {
     name: string;
     description: string;
-    language: string;
-    stars: number;
-    url: string;
+    stack: string[];
+    liveUrl: string;
+    repoUrl: string;
+}
+
+export interface SkillGroup {
+    title: string;
+    description: string;
 }
 
 export interface NeoBaseProps {

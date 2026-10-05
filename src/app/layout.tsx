@@ -5,8 +5,9 @@ import "./globals.css";
 const bricolage = Bricolage_Grotesque({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Nilo Venturin",
-    description: "Front-end Developer Portfolio",
+    title: "Nilo Venturin · Full-Stack Software Engineer",
+    description:
+        "Full-stack software engineer building web apps in TypeScript, React and Next.js and APIs in Node.js and Java/Spring Boot. TOTVS ERP, IAM and SoD experience.",
 };
 
 export default function RootLayout({

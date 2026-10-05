@@ -1,5 +1,6 @@
-import { Code, Layout, Zap, Terminal, Mail, Download } from "lucide-react";
+import { Mail, Download } from "lucide-react";
 import { NeoButton, NeoButtonOutline } from "../ui/NeoButton";
+import { CONTACT } from "../../data";
 
 export const Hero = () => (
   <div className="flex flex-col items-center justify-center min-h-full max-w-4xl mx-auto px-4 text-center py-12 md:py-20">
@@ -14,20 +15,31 @@ export const Hero = () => (
         </span>
       </h2>
       <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-zinc-900 dark:text-zinc-100 leading-none">
-        SOFTWARE <br />
+        FULL-STACK <br />
         <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-500 to-blue-600">
           ENGINEER
         </span>
       </h1>
-      {/* <p className="max-w-2xl mx-auto text-zinc-600 dark:text-zinc-400 text-lg md:text-xl leading-relaxed">
-                Building scalable, high-performance web applications with
-                <strong className="text-zinc-900 dark:text-zinc-100"> React, Next.js</strong> and
-                <strong className="text-zinc-900 dark:text-zinc-100"> TailwindCSS</strong>.
-            </p> */}
+      <p className="max-w-2xl mx-auto text-zinc-600 dark:text-zinc-400 text-base sm:text-lg md:text-xl leading-relaxed">
+        I build web apps in
+        <strong className="text-zinc-900 dark:text-zinc-100">
+          {" "}
+          TypeScript, React and Next.js
+        </strong>{" "}
+        and APIs in
+        <strong className="text-zinc-900 dark:text-zinc-100">
+          {" "}
+          Node.js and Java/Spring Boot
+        </strong>
+        , with access, auditability and tests in mind.
+      </p>
+      <p className="text-sm text-zinc-500">
+        Vitória, Espírito Santo, Brazil · Remote
+      </p>
     </div>
 
     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-      <NeoButton href="mailto:contact@nilo.dev">
+      <NeoButton href={`mailto:${CONTACT.email}`}>
         <Mail size={18} /> Get in Touch
       </NeoButton>
       <NeoButtonOutline href="/cv.pdf" download>
@@ -36,23 +48,22 @@ export const Hero = () => (
     </div>
 
     <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-wrap gap-4 sm:gap-6 text-zinc-400 dark:text-zinc-600 justify-center">
-      {/* <Code size={24} />
-            <Layout size={24} />
-            <Zap size={24} />
-            <Terminal size={24} /> */}
       {[
-        "js",
         "ts",
-        "nodejs",
+        "js",
         "react",
-        "next",
-        "vercel",
-        "docker",
-        "aws",
-        "postgresql",
+        "nextjs",
+        "angular",
+        "nodejs",
+        "java",
+        "spring",
+        "postgres",
+        "supabase",
         "tailwind",
-        "git",
-        "github",
+        "docker",
+        "githubactions",
+        "vercel",
+        "aws",
       ].map((skill) => (
         <img
           key={skill}

@@ -10,6 +10,7 @@ import { Moon, Sun } from "lucide-react";
 import { Github, Linkedin } from "../ui/BrandIcons";
 import { NavItem } from "../../types";
 import { useTheme } from "../../context/ThemeContext";
+import { CONTACT } from "../../data";
 
 const DockIcon = ({
   mouseX,
@@ -104,7 +105,7 @@ export const Dock = ({
 
         <DockIcon
           mouseX={mouseX}
-          onClick={() => window.open("https://github.com/dev-nilo", "_blank")}
+          onClick={() => window.open(CONTACT.github, "_blank")}
         >
           <Github className="w-5 h-5" />
         </DockIcon>
@@ -112,7 +113,7 @@ export const Dock = ({
         <DockIcon
           mouseX={mouseX}
           onClick={() =>
-            window.open("https://www.linkedin.com/in/niloventurin/", "_blank")
+            window.open(CONTACT.linkedin, "_blank")
           }
         >
           <Linkedin className="w-5 h-5" />
