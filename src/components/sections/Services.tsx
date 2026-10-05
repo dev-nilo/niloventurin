@@ -17,7 +17,7 @@ export const Services = () => (
       {SERVICES_DATA.map((service, index) => (
         <NeoCard
           key={index}
-          className="flex-shrink-0 w-[85vw] md:w-auto snap-center flex flex-col gap-4 h-full"
+          className="shrink-0 w-[85vw] md:w-auto snap-center flex flex-col gap-4 h-full"
         >
           <div className="w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 rounded-lg flex items-center justify-center">
             <service.icon size={24} />

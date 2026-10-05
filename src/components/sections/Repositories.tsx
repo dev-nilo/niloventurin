@@ -1,4 +1,5 @@
-import { Github, Layout, ExternalLink } from "lucide-react";
+import { Layout, ExternalLink } from "lucide-react";
+import { Github } from "../ui/BrandIcons";
 import { REPOS_DATA } from "../../data";
 import { NeoCard } from "../ui/NeoCard";
 import { NeoButtonOutline } from "../ui/NeoButton";
@@ -24,7 +25,7 @@ export const Repositories = () => (
       {REPOS_DATA.map((repo, index) => (
         <NeoCard
           key={index}
-          className="flex-shrink-0 w-[85vw] md:w-auto snap-center group cursor-pointer hover:border-cyan-500 transition-colors"
+          className="shrink-0 w-[85vw] md:w-auto snap-center group cursor-pointer hover:border-cyan-500 transition-colors"
         >
           <div className="flex justify-between items-start mb-4">
             <div className="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-md">

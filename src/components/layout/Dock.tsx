@@ -6,7 +6,8 @@ import {
   useSpring,
   MotionValue,
 } from "framer-motion";
-import { Moon, Sun, Github, Linkedin } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
+import { Github, Linkedin } from "../ui/BrandIcons";
 import { NavItem } from "../../types";
 import { useTheme } from "../../context/ThemeContext";
 
@@ -91,7 +92,7 @@ export const Dock = ({
           </DockIcon>
         ))}
 
-        <div className="w-[1px] h-8 bg-zinc-300 dark:bg-zinc-700 mx-1 self-center shrink-0" />
+        <div className="w-px h-8 bg-zinc-300 dark:bg-zinc-700 mx-1 self-center shrink-0" />
 
         <DockIcon mouseX={mouseX} onClick={toggleTheme}>
           {theme === "dark" ? (

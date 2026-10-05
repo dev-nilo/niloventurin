@@ -1,4 +1,5 @@
-import { Mail, Linkedin } from "lucide-react";
+import { Mail } from "lucide-react";
+import { Linkedin } from "../ui/BrandIcons";
 import { NeoButton, NeoButtonOutline } from "../ui/NeoButton";
 
 export const Contact = () => (

@@ -4,7 +4,7 @@ export const About = () => (
   <div className="max-w-6xl mx-auto px-6 h-full flex items-center py-4 md:py-24 override-scroll">
     <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center h-full">
       <div className="space-y-6 max-h-full overflow-y-auto no-scrollbar pr-2">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-zinc-100 sticky top-0 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-sm py-2 z-10">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-zinc-100 sticky top-0 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xs py-2 z-10">
           Behind the <span className="text-cyan-500">Code</span>
         </h2>
         <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
