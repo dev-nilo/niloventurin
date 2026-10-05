@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { PROFILE } from "../content/profile";
+import { themeInitScript } from "../theme/theme";
 
 const bricolage = Bricolage_Grotesque({ subsets: ["latin"] });
 
@@ -16,7 +17,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
+            <head>
+                <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+            </head>
             <body className={bricolage.className}>{children}</body>
         </html>
     );

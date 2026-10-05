@@ -60,7 +60,7 @@ export default function Home() {
         {/* <TopBar onLogoClick={() => setCurrentSection(0)} /> */}
 
         <main className="flex-1 relative w-full h-full overflow-y-auto overflow-x-hidden pb-24">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={currentSection}
               initial={{ opacity: 0, scale: 0.95, y: 20, filter: "blur(10px)" }}

@@ -1,3 +1,5 @@
+"use client";
+
 import {
     createContext,
     useContext,
@@ -6,39 +8,37 @@ import {
     useCallback,
     ReactNode
 } from "react";
-import { Theme, ThemeContextType } from "../types";
+import { applyTheme, Theme, THEME_STORAGE_KEY } from "../theme/theme";
+
+interface ThemeContextType {
+    theme: Theme;
+    toggleTheme: () => void;
+}
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+const currentTheme = (): Theme =>
+    document.documentElement.classList.contains("dark") ? "dark" : "light";
+
+// The <html> class is set before paint by themeInitScript; this provider only
+// mirrors it into React and handles toggling, so children render on the server.
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const [theme, setTheme] = useState<Theme>("light");
-    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
-        const savedTheme = localStorage.getItem("theme") as Theme | null;
-        const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-        if (savedTheme) {
-            setTheme(savedTheme);
-        } else if (systemPrefersDark) {
-            setTheme("dark");
-        }
+        setTheme(currentTheme());
     }, []);
-
-    useEffect(() => {
-        if (!mounted) return;
-        const root = window.document.documentElement;
-        root.classList.remove("light", "dark");
-        root.classList.add(theme);
-        localStorage.setItem("theme", theme);
-    }, [theme, mounted]);
 
     const toggleTheme = useCallback(() => {
-        setTheme((prev) => (prev === "light" ? "dark" : "light"));
+        const next: Theme = currentTheme() === "dark" ? "light" : "dark";
+        applyTheme(document.documentElement, next);
+        try {
+            localStorage.setItem(THEME_STORAGE_KEY, next);
+        } catch {
+            // storage unavailable (private mode); the toggle still applies
+        }
+        setTheme(next);
     }, []);
-
-    if (!mounted) return <div className="min-h-screen bg-white dark:bg-zinc-950" />;
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
