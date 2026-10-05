@@ -8,7 +8,7 @@ export const Experience = () => (
         Work <span className="text-cyan-500">Experience</span>
       </h2>
       <p className="text-zinc-600 dark:text-zinc-400 max-w-xl mx-auto">
-        ERP development, full-stack web apps and access governance.
+        Where I have been building software.
       </p>
     </div>
 

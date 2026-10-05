@@ -25,16 +25,16 @@ const SECTIONS_CONFIG: NavItem[] = [
   { id: "home", label: "Home", component: <Hero />, icon: HomeIcon },
   { id: "about", label: "About", component: <About />, icon: User },
   {
-    id: "experience",
-    label: "Experience",
-    component: <Experience />,
-    icon: Briefcase,
-  },
-  {
     id: "projects",
     label: "Projects",
     component: <Projects />,
     icon: FolderGit2,
+  },
+  {
+    id: "experience",
+    label: "Experience",
+    component: <Experience />,
+    icon: Briefcase,
   },
   {
     id: "contact",

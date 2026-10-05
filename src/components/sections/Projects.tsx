@@ -21,7 +21,7 @@ export const Projects = () => (
       </NeoButton>
     </div>
 
-    <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 py-8 -mx-6 px-6 no-scrollbar">
+    <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 gap-6 py-8 -mx-6 px-6 no-scrollbar">
       {PROFILE.projects.map((project) => (
         <NeoCard
           key={project.name}

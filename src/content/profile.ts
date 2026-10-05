@@ -67,31 +67,31 @@ export const PROFILE: Profile = {
     { text: "TypeScript, React and Next.js", strong: true },
     { text: " and APIs in " },
     { text: "Node.js and Java/Spring Boot", strong: true },
-    { text: ", with access, auditability and tests in mind." },
+    { text: ", tested and shipped in small, reviewed pull requests." },
   ],
   metaDescription:
-    "Full-stack software engineer building web apps in TypeScript, React and Next.js and APIs in Node.js and Java/Spring Boot. TOTVS ERP, IAM and SoD experience.",
+    "Full-stack software engineer building web apps in TypeScript, React and Next.js and APIs in Node.js and Java/Spring Boot, on PostgreSQL and Supabase.",
   summary:
-    "Full-stack software engineer with 3+ years developing for TOTVS ERPs (Protheus and RM). Before that I worked in access governance, running segregation-of-duties reviews for 10,000+ users. So when I build a feature, I already think about who can access it and how it will be audited.",
+    "Full-stack software engineer. I build web apps in TypeScript with React and Next.js, REST APIs in Node.js and Spring Boot, and data models in PostgreSQL. I care about authentication, row-level security and tests from the first commit, and I use Claude Code every day, with repo context files, ADRs and one reviewed pull request per task.",
   stats: [
-    { value: "3+", label: "Years on TOTVS ERPs" },
-    { value: "10k+", label: "Users in SoD reviews" },
+    { value: "3+", label: "Years as a developer" },
+    { value: "4", label: "Live projects" },
   ],
   skillGroups: [
     {
       title: "Frontend",
       description:
-        "React 19, Next.js (App Router), Angular and PO UI. Tailwind CSS, shadcn/ui and Radix UI, built with Vite or Next.",
+        "React 19, Next.js (App Router) and Angular. Tailwind CSS, shadcn/ui and Radix UI, built with Vite or Next.",
     },
     {
       title: "Backend & APIs",
       description:
-        "REST APIs in Node.js and Java 21/Spring Boot with JPA/Hibernate. OAuth2/OIDC login with Keycloak and RBAC.",
+        "REST APIs in Node.js and Java 21/Spring Boot with JPA/Hibernate.",
     },
     {
       title: "Databases",
       description:
-        "PostgreSQL, Oracle (SQL, PL/SQL), MySQL, Supabase, Redis and SQLite. Drizzle ORM, Flyway migrations and row-level security.",
+        "PostgreSQL, Supabase, MySQL, Oracle, Redis and SQLite. Drizzle ORM and Flyway migrations.",
     },
     {
       title: "Testing & DevOps",
@@ -104,9 +104,9 @@ export const PROFILE: Profile = {
         "Claude Code every day: repo context files (AGENTS.md, CONTEXT.md), ADRs, and one small reviewed pull request per task.",
     },
     {
-      title: "Domain",
+      title: "Auth & access control",
       description:
-        "TOTVS RM and TOTVS Protheus. IAM, segregation of duties, ITGC, SOX and LGPD.",
+        "Supabase Auth with PostgreSQL row-level security, OAuth2/OIDC with Keycloak, and role-based access control.",
     },
   ],
   // Icon ids from https://skillicons.dev
@@ -136,10 +136,9 @@ export const PROFILE: Profile = {
       period: "Jun 2024 – Present",
       location: "Remote",
       highlights: [
-        "Rebuilt SOD Analyzer, PVT's segregation-of-duties tool for TOTVS RM, as a full-stack app with an approver portal, audit log and PDF/XLSX exports.",
-        "Built auth, row-level security, the approval workflow and exports on Supabase; redesigned the UI with shadcn/ui and Radix.",
-        "TOTVS RM customizations and SQL/PL-SQL on Oracle. Reports, integrations and jobs that cut manual work by 6+ hours a day.",
-        "IT risk matrices, ITGC testing and remediation plans for clients' annual SOX certification.",
+        "Rebuilt SOD Analyzer as a full-stack web app in Next.js, React 19, TypeScript and Supabase, with an approver portal, audit log and PDF/XLSX exports.",
+        "Built authentication, row-level security, the approval workflow and export generation; redesigned the dashboard, analysis, login and inbox pages with shadcn/ui and Radix.",
+        "Built reports, integrations and scheduled jobs on Oracle that cut manual work by 6+ hours a day.",
       ],
     },
     {
@@ -148,19 +147,18 @@ export const PROFILE: Profile = {
       period: "May 2023 – May 2024",
       location: "Espírito Santo, Brazil",
       highlights: [
-        "Developed and maintained TOTVS Protheus routines in ADVPL and built REST APIs for PO UI (Angular) screens.",
-        "Built ERP integrations and customizations, and redesigned the company's landing page with Next.js.",
+        "Built REST APIs consumed by Angular (PO UI) screens, and the backend routines behind them.",
+        "Redesigned the company's landing page with Next.js and built system integrations.",
       ],
     },
     {
       company: "Vennx",
-      role: "Systems Analyst · IAM & GRC",
+      role: "Systems Analyst · Access control",
       period: "Dec 2021 – May 2023",
       location: "Remote",
       highlights: [
-        "Designed RBAC models for TOTVS RM, Active Directory, Microsoft Admin, Elaw, Hyperion, Gesplan and other systems.",
-        "Ran segregation-of-duties reviews across 10,000+ users, bringing critical conflicts down to zero.",
-        "Supported SOX compliance and helped clients adapt access governance to LGPD and GDPR.",
+        "Designed role-based access control models for client systems, the groundwork for how I build auth today.",
+        "Automated access analysis and reporting with SQL across 10,000+ users.",
       ],
     },
     {
@@ -169,19 +167,11 @@ export const PROFILE: Profile = {
       period: "Jan 2019 – Feb 2020",
       location: "Vila Velha, Brazil",
       highlights: [
-        "Designed and built client websites from requirements to launch: WordPress themes and PHP features, and front ends in React, JavaScript, HTML and CSS.",
+        "Designed and built client websites from first conversation to launch: front ends in React, JavaScript, HTML and CSS, and WordPress themes and features in PHP.",
       ],
     },
   ],
   projects: [
-    {
-      name: "SoD Profile Validator",
-      description:
-        "Matches TOTVS RM permission profiles to an access-governance catalog using exact, code-normalized and fuzzy (Levenshtein) matching, then exports a CSV for import.",
-      stack: ["Next.js", "TypeScript", "Drizzle ORM", "PostgreSQL", "Vitest"],
-      liveUrl: "https://sod-theta.vercel.app",
-      repoUrl: "https://github.com/dev-nilo/SoD",
-    },
     {
       name: "Squadra",
       description:
@@ -191,12 +181,28 @@ export const PROFILE: Profile = {
       repoUrl: "https://github.com/dev-nilo/nextjs-squadra",
     },
     {
+      name: "Pilares",
+      description:
+        "Offline-capable PWA journal with daily missions, XP, streaks and a weekly heatmap.",
+      stack: ["Next.js", "TypeScript", "PWA"],
+      liveUrl: "https://cave-kappa-ten.vercel.app",
+      repoUrl: "https://github.com/dev-nilo/cave",
+    },
+    {
       name: "Cat-modoro",
       description:
         "Pomodoro timer with a pixel-art cat drawn in code that tires as you work.",
       stack: ["Next.js", "React", "TypeScript", "Vitest"],
       liveUrl: "https://cat-modoro.vercel.app",
       repoUrl: "https://github.com/dev-nilo/cat-modoro",
+    },
+    {
+      name: "SoD Profile Validator",
+      description:
+        "Matches ERP permission profiles to a catalog using exact, code-normalized and fuzzy (Levenshtein) matching, then exports a CSV for import.",
+      stack: ["Next.js", "TypeScript", "Drizzle ORM", "PostgreSQL", "Vitest"],
+      liveUrl: "https://sod-theta.vercel.app",
+      repoUrl: "https://github.com/dev-nilo/SoD",
     },
   ],
   contact: {
@@ -205,6 +211,6 @@ export const PROFILE: Profile = {
     linkedin: "https://www.linkedin.com/in/niloventurin/",
     cvPath: "/cv.pdf",
     pitch:
-      "Looking for a full-stack engineer who also understands access control and audits? Send me an email or reach out on LinkedIn.",
+      "Looking for a full-stack engineer for your web app or API? Send me an email or reach out on LinkedIn.",
   },
 };
