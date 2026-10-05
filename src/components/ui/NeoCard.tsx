@@ -1,9 +1,12 @@
-import { NeoBaseProps } from "../../types";
+import { ReactNode } from "react";
 
 export const NeoCard = ({
   children,
   className = "",
-}: Omit<NeoBaseProps, "href" | "download">) => (
+}: {
+  children: ReactNode;
+  className?: string;
+}) => (
   <div
     className={`
       relative border-2 border-zinc-900 dark:border-zinc-100 

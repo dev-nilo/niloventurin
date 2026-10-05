@@ -14,11 +14,3 @@ export interface NavItem {
     component: ReactNode;
     icon: LucideIcon;
 }
-
-export interface NeoBaseProps {
-    children: ReactNode;
-    className?: string;
-    onClick?: () => void;
-    href?: string;
-    download?: boolean;
-}

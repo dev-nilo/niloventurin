@@ -11,6 +11,7 @@ import { Github, Linkedin } from "../ui/BrandIcons";
 import { NavItem } from "../../types";
 import { useTheme } from "../../context/ThemeContext";
 import { PROFILE } from "../../content/profile";
+import { openExternal } from "../ui/AppLink";
 
 const DockIcon = ({
   mouseX,
@@ -105,7 +106,7 @@ export const Dock = ({
 
         <DockIcon
           mouseX={mouseX}
-          onClick={() => window.open(PROFILE.contact.github, "_blank")}
+          onClick={() => openExternal(PROFILE.contact.github)}
         >
           <Github className="w-5 h-5" />
         </DockIcon>
@@ -113,7 +114,7 @@ export const Dock = ({
         <DockIcon
           mouseX={mouseX}
           onClick={() =>
-            window.open(PROFILE.contact.linkedin, "_blank")
+            openExternal(PROFILE.contact.linkedin)
           }
         >
           <Linkedin className="w-5 h-5" />

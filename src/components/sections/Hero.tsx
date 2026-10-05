@@ -1,5 +1,5 @@
 import { Mail, Download } from "lucide-react";
-import { NeoButton, NeoButtonOutline } from "../ui/NeoButton";
+import { NeoButton } from "../ui/NeoButton";
 import { PROFILE } from "../../content/profile";
 
 export const Hero = () => (
@@ -43,9 +43,9 @@ export const Hero = () => (
       <NeoButton href={`mailto:${PROFILE.contact.email}`}>
         <Mail size={18} /> Get in Touch
       </NeoButton>
-      <NeoButtonOutline href={PROFILE.contact.cvPath} download>
+      <NeoButton variant="outline" href={PROFILE.contact.cvPath} download>
         <Download size={18} /> Download CV
-      </NeoButtonOutline>
+      </NeoButton>
     </div>
 
     <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-wrap gap-4 sm:gap-6 text-zinc-400 dark:text-zinc-600 justify-center">

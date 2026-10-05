@@ -2,7 +2,8 @@ import { Layout, ExternalLink } from "lucide-react";
 import { Github } from "../ui/BrandIcons";
 import { PROFILE } from "../../content/profile";
 import { NeoCard } from "../ui/NeoCard";
-import { NeoButtonOutline } from "../ui/NeoButton";
+import { AppLink } from "../ui/AppLink";
+import { NeoButton } from "../ui/NeoButton";
 
 export const Projects = () => (
   <div className="max-w-6xl mx-auto h-full flex flex-col justify-center px-6 py-12 md:py-24">
@@ -15,9 +16,9 @@ export const Projects = () => (
           Personal projects deployed on Vercel. Source code is on my GitHub.
         </p>
       </div>
-      <NeoButtonOutline href={PROFILE.contact.github} className="shrink-0">
+      <NeoButton variant="outline" href={PROFILE.contact.github} className="shrink-0">
         <Github size={18} /> View GitHub Profile
-      </NeoButtonOutline>
+      </NeoButton>
     </div>
 
     <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 py-8 -mx-6 px-6 no-scrollbar">
@@ -31,34 +32,28 @@ export const Projects = () => (
               <Layout size={20} className="text-zinc-900 dark:text-zinc-100" />
             </div>
             <div className="flex gap-3 text-zinc-400">
-              <a
+              <AppLink
                 href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label={`${project.name} source code`}
                 className="hover:text-cyan-500 transition-colors"
               >
                 <Github size={18} />
-              </a>
-              <a
+              </AppLink>
+              <AppLink
                 href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label={`Open ${project.name}`}
                 className="hover:text-cyan-500 transition-colors"
               >
                 <ExternalLink size={18} />
-              </a>
+              </AppLink>
             </div>
           </div>
-          <a
+          <AppLink
             href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
             className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-2 hover:text-cyan-500 transition-colors"
           >
             {project.name}
-          </a>
+          </AppLink>
           <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
             {project.description}
           </p>

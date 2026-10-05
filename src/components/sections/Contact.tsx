@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
 import { Linkedin } from "../ui/BrandIcons";
-import { NeoButton, NeoButtonOutline } from "../ui/NeoButton";
+import { NeoButton } from "../ui/NeoButton";
 import { PROFILE } from "../../content/profile";
 
 export const Contact = () => (
@@ -20,12 +20,12 @@ export const Contact = () => (
         <NeoButton href={`mailto:${PROFILE.contact.email}`} className="text-lg px-8 py-4">
           <Mail className="mr-2" /> Send an Email
         </NeoButton>
-        <NeoButtonOutline
+        <NeoButton variant="outline"
           href={PROFILE.contact.linkedin}
           className="text-lg px-8 py-4"
         >
           <Linkedin className="mr-2" /> LinkedIn
-        </NeoButtonOutline>
+        </NeoButton>
       </div>
     </div>
 

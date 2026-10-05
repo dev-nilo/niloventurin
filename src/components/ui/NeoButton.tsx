@@ -1,51 +1,62 @@
-import { NeoBaseProps } from "../../types";
+import { ReactNode } from "react";
+import { AppLink } from "./AppLink";
 
-export const NeoButton = ({ children, onClick, className = "", href, download }: NeoBaseProps) => {
-    const baseClass = `
-    inline-flex items-center justify-center gap-2 px-6 py-3 font-bold
-    bg-cyan-400 hover:bg-cyan-500 text-zinc-900
-    border-2 border-zinc-900 rounded-lg
+type Variant = "solid" | "outline";
+
+type NeoButtonProps = {
+  children: ReactNode;
+  variant?: Variant;
+  className?: string;
+} & (
+  | { href: string; download?: boolean; onClick?: never }
+  | { onClick: () => void; href?: never; download?: never }
+);
+
+const BASE = `
+  inline-flex items-center justify-center gap-2 px-6 py-3 font-bold
+  border-2 rounded-lg
+  active:translate-x-[2px] active:translate-y-[2px]
+  transition-all cursor-pointer select-none
+`;
+
+const VARIANTS: Record<Variant, string> = {
+  solid: `
+    bg-cyan-400 hover:bg-cyan-500 text-zinc-900 border-zinc-900
     shadow-[4px_4px_0px_0px_rgba(24,24,27,1)]
     dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]
-    active:translate-x-[2px] active:translate-y-[2px]
     active:shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]
     dark:active:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]
-    transition-all cursor-pointer select-none
-    ${className}
-  `;
-
-    if (href) {
-        return (
-            <a href={href} className={baseClass} download={download} target={href.startsWith('http') ? "_blank" : undefined} rel="noreferrer">
-                {children}
-            </a>
-        );
-    }
-
-    return (
-        <button onClick={onClick} className={baseClass}>
-            {children}
-        </button>
-    );
-};
-
-export const NeoButtonOutline = ({ children, onClick, className = "", href, download }: NeoBaseProps) => {
-    const baseClass = `
-    inline-flex items-center justify-center gap-2 px-6 py-3 font-bold
+  `,
+  outline: `
     bg-transparent text-zinc-900 dark:text-zinc-100
-    border-2 border-zinc-900 dark:border-zinc-100 rounded-lg
+    border-zinc-900 dark:border-zinc-100
+    hover:bg-zinc-100 dark:hover:bg-zinc-800
     shadow-[4px_4px_0px_0px_rgba(24,24,27,1)]
     dark:shadow-[4px_4px_0px_0px_rgba(6,182,212,1)]
-    hover:bg-zinc-100 dark:hover:bg-zinc-800
-    active:translate-x-[2px] active:translate-y-[2px]
     active:shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]
     dark:active:shadow-[2px_2px_0px_0px_rgba(6,182,212,1)]
-    transition-all cursor-pointer select-none
-    ${className}
-  `;
+  `,
+};
 
-    if (href) {
-        return <a href={href} className={baseClass} download={download} target={href.startsWith('http') ? "_blank" : undefined} rel="noreferrer">{children}</a>;
-    }
-    return <button onClick={onClick} className={baseClass}>{children}</button>;
+export const NeoButton = ({
+  children,
+  variant = "solid",
+  className = "",
+  ...action
+}: NeoButtonProps) => {
+  const classes = `${BASE} ${VARIANTS[variant]} ${className}`;
+
+  if (action.href !== undefined) {
+    return (
+      <AppLink href={action.href} download={action.download} className={classes}>
+        {children}
+      </AppLink>
+    );
+  }
+
+  return (
+    <button type="button" onClick={action.onClick} className={classes}>
+      {children}
+    </button>
+  );
 };
