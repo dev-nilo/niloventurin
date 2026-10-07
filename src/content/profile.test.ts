@@ -6,7 +6,7 @@ import { PROFILE } from "./profile";
 const externalUrls = [
   PROFILE.contact.github,
   PROFILE.contact.linkedin,
-  ...PROFILE.projects.flatMap((p) => [p.liveUrl, p.repoUrl]),
+  ...[...PROFILE.projects, ...PROFILE.otherProjects].flatMap((p) => [p.liveUrl, p.repoUrl]),
 ];
 
 describe("PROFILE", () => {
@@ -25,8 +25,7 @@ describe("PROFILE", () => {
   it("has unique keys for rendered lists", () => {
     const unique = (xs: string[]) => new Set(xs).size === xs.length;
     expect(unique(PROFILE.experience.map((e) => e.company))).toBe(true);
-    expect(unique(PROFILE.projects.map((p) => p.name))).toBe(true);
+    expect(unique([...PROFILE.projects, ...PROFILE.otherProjects].map((p) => p.name))).toBe(true);
     expect(unique(PROFILE.skillGroups.map((g) => g.title))).toBe(true);
-    expect(unique(PROFILE.skillIcons)).toBe(true);
   });
 });

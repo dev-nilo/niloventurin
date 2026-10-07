@@ -1,11 +1,6 @@
 // Every resume-derived fact on the site lives here. Sections and page
 // metadata only render it, so a resume update is a change to this file.
 
-export interface TextSegment {
-  text: string;
-  strong?: boolean;
-}
-
 export interface Stat {
   value: string;
   label: string;
@@ -13,7 +8,7 @@ export interface Stat {
 
 export interface SkillGroup {
   title: string;
-  description: string;
+  items: string[];
 }
 
 export interface ExperienceItem {
@@ -22,6 +17,8 @@ export interface ExperienceItem {
   period: string;
   location: string;
   highlights: string[];
+  // Other work at the same job, shown smaller under the highlights.
+  secondary?: string[];
 }
 
 export interface ProjectItem {
@@ -35,18 +32,18 @@ export interface ProjectItem {
 export interface Profile {
   name: string;
   fullName: string;
-  headline: string;
+  role: string;
   location: string;
   workMode: string;
-  tagline: TextSegment[];
   metaDescription: string;
-  summary: string;
+  summary: string[];
   stats: Stat[];
   skillGroups: SkillGroup[];
-  skillIcons: string[];
   education: string;
+  languages: string;
   experience: ExperienceItem[];
   projects: ProjectItem[];
+  otherProjects: ProjectItem[];
   contact: {
     email: string;
     github: string;
@@ -59,76 +56,29 @@ export interface Profile {
 export const PROFILE: Profile = {
   name: "Nilo Venturin",
   fullName: "Nilo Venturin Neto",
-  headline: "Full-Stack Software Engineer",
+  role: "Senior Full-Stack Software Engineer",
   location: "Vitória, Espírito Santo, Brazil",
   workMode: "Remote",
-  tagline: [
-    { text: "I build web apps in " },
-    { text: "TypeScript, React and Next.js", strong: true },
-    { text: " and APIs in " },
-    { text: "Node.js and Java/Spring Boot", strong: true },
-    { text: ", tested and shipped in small, reviewed pull requests." },
-  ],
   metaDescription:
-    "Full-stack software engineer building web apps in TypeScript, React and Next.js and APIs in Node.js and Java/Spring Boot, on PostgreSQL and Supabase.",
-  summary:
-    "Full-stack software engineer. I build web apps in TypeScript with React and Next.js, REST APIs in Node.js and Spring Boot, and data models in PostgreSQL. I care about authentication, row-level security and tests from the first commit, and I use Claude Code every day, with repo context files, ADRs and one reviewed pull request per task.",
+    "Nilo Venturin, full-stack software engineer in Brazil. Web apps in TypeScript with React and Next.js, APIs in Java/Spring Boot and Node.js, on PostgreSQL.",
+  summary: [
+    "I build web apps in TypeScript with React, Next.js and Angular, and APIs in Java/Spring Boot and Node.js, on PostgreSQL. I use Claude Code every day, with context files and decision records in each repo, and ship in small, reviewed pull requests.",
+    "I also have a background in access governance, so I build features already thinking about who can access them and how they'll be audited.",
+  ],
   stats: [
-    { value: "3+", label: "Years as a developer" },
-    { value: "4", label: "Live projects" },
+    { value: "5+", label: "years in software development" },
+    { value: "B2", label: "English level" },
   ],
   skillGroups: [
-    {
-      title: "Frontend",
-      description:
-        "React 19, Next.js (App Router) and Angular. Tailwind CSS, shadcn/ui and Radix UI, built with Vite or Next.",
-    },
-    {
-      title: "Backend & APIs",
-      description:
-        "REST APIs in Node.js and Java 21/Spring Boot with JPA/Hibernate.",
-    },
-    {
-      title: "Databases",
-      description:
-        "PostgreSQL, Supabase, MySQL, Oracle, Redis and SQLite. Drizzle ORM and Flyway migrations.",
-    },
-    {
-      title: "Testing & DevOps",
-      description:
-        "Vitest, Jest and JUnit. Git, GitHub Actions, Docker, Vercel and AWS (EC2, S3).",
-    },
-    {
-      title: "AI-assisted development",
-      description:
-        "Claude Code every day: repo context files (AGENTS.md, CONTEXT.md), ADRs, and one small reviewed pull request per task.",
-    },
-    {
-      title: "Auth & access control",
-      description:
-        "Supabase Auth with PostgreSQL row-level security, OAuth2/OIDC with Keycloak, and role-based access control.",
-    },
-  ],
-  // Icon ids from https://skillicons.dev
-  skillIcons: [
-    "ts",
-    "js",
-    "react",
-    "nextjs",
-    "angular",
-    "nodejs",
-    "java",
-    "spring",
-    "postgres",
-    "supabase",
-    "tailwind",
-    "docker",
-    "githubactions",
-    "vercel",
-    "aws",
+    { title: "Frontend", items: ["React", "Next.js", "TypeScript", "Angular", "Tailwind CSS"] },
+    { title: "Backend", items: ["Java/Spring Boot", "Node.js", "REST APIs"] },
+    { title: "Data", items: ["PostgreSQL", "Oracle", "Supabase", "Redis", "Flyway"] },
+    { title: "DevOps", items: ["Docker", "GitHub Actions", "Vercel", "AWS", "Vitest", "JUnit"] },
+    { title: "Security", items: ["OAuth2/OIDC", "Keycloak", "Row-level security", "RBAC", "SOX"] },
   ],
   education:
-    "Bachelor's degree in Computer Systems Analysis, Multivix (2022 – 2024). Certification: curso.dev (full-stack Node.js/Next.js). Portuguese (native), English (intermediate).",
+    "B.Sc. Computer Systems Analysis, Multivix (2024) · curso.dev certification",
+  languages: "Portuguese (native) · English (B2)",
   experience: [
     {
       company: "PVT Software",
@@ -136,9 +86,14 @@ export const PROFILE: Profile = {
       period: "Jun 2024 – Present",
       location: "Remote",
       highlights: [
-        "Rebuilt SOD Analyzer as a full-stack web app in Next.js, React 19, TypeScript and Supabase, with an approver portal, audit log and PDF/XLSX exports.",
-        "Built authentication, row-level security, the approval workflow and export generation; redesigned the dashboard, analysis, login and inbox pages with shadcn/ui and Radix.",
-        "Built reports, integrations and scheduled jobs on Oracle that cut manual work by 6+ hours a day.",
+        "Came up with Argos (SOD Analyzer), a segregation-of-duties platform for TOTVS RM, and built it with a small team up to a client proof of concept. Analysts design access profiles, run risk analyses, send them for approval and apply the approved changes to the ERP, with a full audit trail for SOX.",
+        "Built the PostgreSQL data layer: migrations, PL/pgSQL functions and row-level security for risks, analyses, approvals and evidence.",
+        "Wrote the Node.js/TypeScript service and the Supabase Edge Functions behind the SoD engine, and redesigned the React 19 front end with shadcn/ui and Radix.",
+        "Every write to the ERP is read back to confirm it. Anything we can't confirm goes to manual review instead of being retried.",
+      ],
+      secondary: [
+        "TOTVS RM customizations and SQL/PL-SQL programs on Oracle. The reports, integrations and scheduled jobs I built cut manual work by more than 6 hours a day.",
+        "IT risk matrices, ITGC testing and remediation plans for clients' annual SOX certification.",
       ],
     },
     {
@@ -147,18 +102,29 @@ export const PROFILE: Profile = {
       period: "May 2023 – May 2024",
       location: "Espírito Santo, Brazil",
       highlights: [
-        "Built REST APIs consumed by Angular (PO UI) screens, and the backend routines behind them.",
-        "Redesigned the company's landing page with Next.js and built system integrations.",
+        "Developed and maintained TOTVS Protheus routines in ADVPL, and built the REST APIs behind PO UI (Angular) screens.",
+        "Worked on ERP integrations, customizations and improvements, and analyzed and streamlined system processes.",
+        "Redesigned the company's landing page with Next.js.",
+        "Handled internal support requests and documented processes and team practices.",
       ],
     },
     {
       company: "Vennx",
-      role: "Systems Analyst · Access control",
+      role: "Systems Analyst, IAM & GRC",
       period: "Dec 2021 – May 2023",
       location: "Remote",
       highlights: [
-        "Designed role-based access control models for client systems, the groundwork for how I build auth today.",
-        "Automated access analysis and reporting with SQL across 10,000+ users.",
+        "Designed role-based access models and ran segregation-of-duties reviews covering more than 10,000 users, bringing critical conflicts down to zero.",
+        "Automated access analysis in SQL and prepared evidence for SOX audits.",
+      ],
+    },
+    {
+      company: "Freelance",
+      role: "Front-End Developer",
+      period: "Mar 2020 – Nov 2021",
+      location: "Self-employed",
+      highlights: [
+        "Built front ends in React for freelance clients.",
       ],
     },
     {
@@ -167,7 +133,7 @@ export const PROFILE: Profile = {
       period: "Jan 2019 – Feb 2020",
       location: "Vila Velha, Brazil",
       highlights: [
-        "Designed and built client websites from first conversation to launch: front ends in React, JavaScript, HTML and CSS, and WordPress themes and features in PHP.",
+        "Designed and built client websites from layout to launch: front ends in React, JavaScript and CSS, and WordPress themes and features in PHP.",
       ],
     },
   ],
@@ -175,34 +141,34 @@ export const PROFILE: Profile = {
     {
       name: "Squadra",
       description:
-        "Multi-tenant app for player cards and balanced team draws. Each account's data is isolated with Supabase Auth and PostgreSQL row-level security.",
+        "Draws balanced teams from player ratings. Each account only sees its own data, enforced by row-level security in PostgreSQL.",
       stack: ["Next.js 16", "React 19", "TypeScript", "Supabase", "Vitest"],
       liveUrl: "https://squadra-eight.vercel.app",
       repoUrl: "https://github.com/dev-nilo/nextjs-squadra",
     },
     {
-      name: "Pilares",
-      description:
-        "Offline-capable PWA journal with daily missions, XP, streaks and a weekly heatmap.",
-      stack: ["Next.js", "TypeScript", "PWA"],
-      liveUrl: "https://cave-kappa-ten.vercel.app",
-      repoUrl: "https://github.com/dev-nilo/cave",
-    },
-    {
       name: "Cat-modoro",
       description:
-        "Pomodoro timer with a pixel-art cat drawn in code that tires as you work.",
+        "Pomodoro timer with a pixel-art cat drawn in code that gets tired as you work.",
       stack: ["Next.js", "React", "TypeScript", "Vitest"],
       liveUrl: "https://cat-modoro.vercel.app",
       repoUrl: "https://github.com/dev-nilo/cat-modoro",
     },
+  ],
+  otherProjects: [
     {
       name: "SoD Profile Validator",
-      description:
-        "Matches ERP permission profiles to a catalog using exact, code-normalized and fuzzy (Levenshtein) matching, then exports a CSV for import.",
+      description: "fuzzy matching of ERP permission profiles",
       stack: ["Next.js", "TypeScript", "Drizzle ORM", "PostgreSQL", "Vitest"],
       liveUrl: "https://sod-theta.vercel.app",
       repoUrl: "https://github.com/dev-nilo/SoD",
+    },
+    {
+      name: "Pilares",
+      description: "offline journal (PWA)",
+      stack: ["Next.js", "TypeScript", "PWA"],
+      liveUrl: "https://cave-kappa-ten.vercel.app",
+      repoUrl: "https://github.com/dev-nilo/cave",
     },
   ],
   contact: {
@@ -211,6 +177,6 @@ export const PROFILE: Profile = {
     linkedin: "https://www.linkedin.com/in/niloventurin/",
     cvPath: "/cv.pdf",
     pitch:
-      "Looking for a full-stack engineer for your web app or API? Send me an email or reach out on LinkedIn.",
+      "If you're hiring for full-stack work, email is the fastest way to reach me. I'm also on LinkedIn.",
   },
 };

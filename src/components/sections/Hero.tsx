@@ -1,62 +1,40 @@
-import { Mail, Download } from "lucide-react";
+import { Download, MapPin } from "lucide-react";
+import { Linkedin } from "../ui/BrandIcons";
 import { NeoButton } from "../ui/NeoButton";
 import { PROFILE } from "../../content/profile";
 
 export const Hero = () => (
   <div className="flex flex-col items-center justify-center min-h-full max-w-4xl mx-auto px-4 text-center py-12 md:py-20">
-    <div className="absolute top-1/4 left-1/4 w-32 h-32 sm:w-64 sm:h-64 bg-cyan-400/20 rounded-full blur-[60px] sm:blur-[100px] -z-10 pointer-events-none" />
-    <div className="absolute bottom-1/4 right-1/4 w-32 h-32 sm:w-64 sm:h-64 bg-purple-400/20 rounded-full blur-[60px] sm:blur-[100px] -z-10 pointer-events-none" />
-
-    <div className="space-y-4 mb-8">
-      <h2 className="text-lg sm:text-xl md:text-2xl font-medium text-zinc-600 dark:text-zinc-400">
-        Hi, I'm{" "}
-        <span className="font-bold text-zinc-900 dark:text-zinc-100">
-          {PROFILE.name}
-        </span>
-      </h2>
-      <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-zinc-900 dark:text-zinc-100 leading-none">
-        FULL-STACK <br />
-        <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-500 to-blue-600">
-          ENGINEER
-        </span>
+    <div className="space-y-5 mb-8">
+      <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-zinc-900 dark:text-zinc-100 leading-none">
+        {PROFILE.name}
       </h1>
-      <p className="max-w-2xl mx-auto text-zinc-600 dark:text-zinc-400 text-base sm:text-lg md:text-xl leading-relaxed">
-        {PROFILE.tagline.map((segment) =>
-          segment.strong ? (
-            <strong
-              key={segment.text}
-              className="text-zinc-900 dark:text-zinc-100"
-            >
-              {segment.text}
-            </strong>
-          ) : (
-            segment.text
-          ),
-        )}
+      <p className="text-xl sm:text-2xl md:text-3xl font-bold text-zinc-700 dark:text-zinc-300">
+        {PROFILE.role}
       </p>
-      <p className="text-sm text-zinc-500">
-        {PROFILE.location} · {PROFILE.workMode}
+      <p className="inline-flex items-center gap-1.5 text-sm text-zinc-500">
+        <MapPin size={14} /> {PROFILE.location} · {PROFILE.workMode}
       </p>
     </div>
 
     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-      <NeoButton href={`mailto:${PROFILE.contact.email}`}>
-        <Mail size={18} /> Get in Touch
+      <NeoButton href={PROFILE.contact.linkedin}>
+        <Linkedin size={18} /> LinkedIn
       </NeoButton>
       <NeoButton variant="outline" href={PROFILE.contact.cvPath} download>
         <Download size={18} /> Download CV
       </NeoButton>
     </div>
 
-    <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-wrap gap-4 sm:gap-6 text-zinc-400 dark:text-zinc-600 justify-center">
-      {PROFILE.skillIcons.map((skill) => (
-        <img
-          key={skill}
-          src={`https://skillicons.dev/icons?i=${skill}`}
-          alt={skill}
-          className="h-8 w-8 sm:h-10 sm:w-10 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-default"
-        />
+    <dl className="mt-10 flex justify-center gap-10 sm:gap-16">
+      {PROFILE.stats.map((stat) => (
+        <div key={stat.label} className="flex flex-col-reverse">
+          <dt className="text-xs sm:text-sm text-zinc-500">{stat.label}</dt>
+          <dd className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-zinc-100">
+            {stat.value}
+          </dd>
+        </div>
       ))}
-    </div>
+    </dl>
   </div>
 );

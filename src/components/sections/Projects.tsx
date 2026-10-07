@@ -10,14 +10,14 @@ export const Projects = () => (
     <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-6">
       <div>
         <h2 className="text-4xl font-extrabold text-zinc-900 dark:text-zinc-100 mb-4">
-          Live <span className="text-cyan-500">Projects</span>
+          Projects
         </h2>
         <p className="text-zinc-600 dark:text-zinc-400 max-w-lg">
-          Personal projects deployed on Vercel. Source code is on my GitHub.
+          Side projects, all live.
         </p>
       </div>
       <NeoButton variant="outline" href={PROFILE.contact.github} className="shrink-0">
-        <Github size={18} /> View GitHub Profile
+        <Github size={18} /> GitHub
       </NeoButton>
     </div>
 
@@ -68,5 +68,22 @@ export const Projects = () => (
         </NeoCard>
       ))}
     </div>
+
+    <p className="text-sm text-zinc-500 pb-20 md:pb-0">
+      Also:{" "}
+      {PROFILE.otherProjects.map((project, index) => (
+        <span key={project.name}>
+          {index > 0 && ", "}
+          <AppLink
+            href={project.liveUrl}
+            className="font-semibold text-zinc-700 dark:text-zinc-300 underline underline-offset-2 hover:text-cyan-500"
+          >
+            {project.name}
+          </AppLink>{" "}
+          ({project.description})
+        </span>
+      ))}
+      .
+    </p>
   </div>
 );

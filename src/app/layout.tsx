@@ -7,7 +7,7 @@ import { themeInitScript } from "../theme/theme";
 const bricolage = Bricolage_Grotesque({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: `${PROFILE.name} · ${PROFILE.headline}`,
+    title: `${PROFILE.name} · ${PROFILE.role}`,
     description: PROFILE.metaDescription,
 };
 

@@ -10,7 +10,7 @@ export const Contact = () => (
         {PROFILE.workMode} · {PROFILE.location}
       </span>
       <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-900 dark:text-zinc-100 mb-6">
-        Let's work <span className="text-cyan-500">together!</span>
+        Contact
       </h2>
       <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-xl mx-auto mb-10">
         {PROFILE.contact.pitch}
@@ -18,7 +18,7 @@ export const Contact = () => (
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <NeoButton href={`mailto:${PROFILE.contact.email}`} className="text-lg px-8 py-4">
-          <Mail className="mr-2" /> Send an Email
+          <Mail className="mr-2" /> {PROFILE.contact.email}
         </NeoButton>
         <NeoButton variant="outline"
           href={PROFILE.contact.linkedin}
