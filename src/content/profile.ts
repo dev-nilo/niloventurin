@@ -67,7 +67,7 @@ export const PROFILE: Profile = {
   ],
   stats: [
     { value: "5+", label: "years in software development" },
-    { value: "B2", label: "English level" },
+    { value: "B2+", label: "English level" },
   ],
   skillGroups: [
     { title: "Frontend", items: ["React", "Next.js", "TypeScript", "Angular", "Tailwind CSS"] },
@@ -78,7 +78,7 @@ export const PROFILE: Profile = {
   ],
   education:
     "Technologist Degree in Systems Analysis and Development, Multivix (2024) · curso.dev certification (2025)",
-  languages: "Portuguese (native) · English (B2, professional working)",
+  languages: "Portuguese (native) · English (B2+, near C1)",
   experience: [
     {
       company: "PVT Software",
