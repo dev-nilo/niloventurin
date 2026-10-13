@@ -54,15 +54,15 @@ export interface Profile {
 }
 
 export const PROFILE: Profile = {
-  name: "Nilo Venturin",
+  name: "Nilo Venturin Neto",
   fullName: "Nilo Venturin Neto",
-  role: "Senior Full-Stack Software Engineer",
-  location: "Vitória, Espírito Santo, Brazil",
-  workMode: "Remote",
+  role: "Full-Stack Software Engineer",
+  location: "Vitória, ES, Brazil",
+  workMode: "Open to remote",
   metaDescription:
-    "Nilo Venturin, full-stack software engineer in Brazil. Web apps in TypeScript with React and Next.js, APIs in Java/Spring Boot and Node.js, on PostgreSQL.",
+    "Nilo Venturin Neto, full-stack software engineer in Brazil. Web apps in TypeScript with React and Next.js, APIs in Node.js, on PostgreSQL.",
   summary: [
-    "I build web apps in TypeScript with React, Next.js and Angular, and APIs in Java/Spring Boot and Node.js, on PostgreSQL. I use Claude Code every day, with context files and decision records in each repo, and ship in small, reviewed pull requests.",
+    "I build web apps in TypeScript with React, Next.js and Angular, and APIs in Node.js, on PostgreSQL and Oracle. I use Claude Code every day, with context files and decision records in each repo, and ship in small, reviewed pull requests.",
     "I also have a background in access governance, so I build features already thinking about who can access them and how they'll be audited.",
   ],
   stats: [
@@ -72,13 +72,13 @@ export const PROFILE: Profile = {
   skillGroups: [
     { title: "Frontend", items: ["React", "Next.js", "TypeScript", "Angular", "Tailwind CSS"] },
     { title: "Backend", items: ["Java/Spring Boot", "Node.js", "REST APIs"] },
-    { title: "Data", items: ["PostgreSQL", "Oracle", "Supabase", "Redis", "Flyway"] },
-    { title: "DevOps", items: ["Docker", "GitHub Actions", "Vercel", "AWS", "Vitest", "JUnit"] },
+    { title: "Data", items: ["PostgreSQL", "Oracle", "Supabase", "Drizzle ORM", "Flyway"] },
+    { title: "DevOps", items: ["Docker", "GitHub Actions", "Vercel", "Vitest", "JUnit"] },
     { title: "Security", items: ["OAuth2/OIDC", "Keycloak", "Row-level security", "RBAC", "SOX"] },
   ],
   education:
-    "B.Sc. Computer Systems Analysis, Multivix (2024) · curso.dev certification",
-  languages: "Portuguese (native) · English (B2)",
+    "Technologist Degree in Systems Analysis and Development, Multivix (2024) · curso.dev certification (2025)",
+  languages: "Portuguese (native) · English (B2, professional working)",
   experience: [
     {
       company: "PVT Software",
@@ -86,10 +86,10 @@ export const PROFILE: Profile = {
       period: "Jun 2024 – Present",
       location: "Remote",
       highlights: [
-        "Came up with Argos (SOD Analyzer), a segregation-of-duties platform for TOTVS RM, and built it with a small team up to a client proof of concept. Analysts design access profiles, run risk analyses, send them for approval and apply the approved changes to the ERP, with a full audit trail for SOX.",
-        "Built the PostgreSQL data layer: migrations, PL/pgSQL functions and row-level security for risks, analyses, approvals and evidence.",
-        "Wrote the Node.js/TypeScript service and the Supabase Edge Functions behind the SoD engine, and redesigned the React 19 front end with shadcn/ui and Radix.",
-        "Every write to the ERP is read back to confirm it. Anything we can't confirm goes to manual review instead of being retried.",
+        "Designed and built SOD Analyzer on my own: a segregation-of-duties app for TOTVS RM. Analysts run SoD analyses on permission profiles and send each one to a separate approver portal, with an audit log and PDF/XLSX exports.",
+        "Built SOD Analyzer's authentication, row-level security, approval workflow and exports on Supabase, with a Next.js, React 19, TypeScript and shadcn/ui front end.",
+        "Proposed Argos, a SoD platform that applies approved access changes to TOTVS RM with a full SOX audit trail, and built it with a small team up to a client proof of concept.",
+        "For Argos, built the PostgreSQL data layer (migrations, PL/pgSQL, row-level security), the Node.js/TypeScript service and the Supabase Edge Functions behind the SoD engine. Every write to the ERP is read back to confirm it; anything we can't confirm goes to manual review instead of being retried.",
       ],
       secondary: [
         "TOTVS RM customizations and SQL/PL-SQL programs on Oracle. The reports, integrations and scheduled jobs I built cut manual work by more than 6 hours a day.",
