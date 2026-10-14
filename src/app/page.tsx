@@ -7,6 +7,7 @@ import {
   Briefcase,
   FolderGit2,
   MessageSquare,
+  Tag,
 } from "lucide-react";
 
 import { ThemeProvider } from "../context/ThemeContext";
@@ -18,6 +19,7 @@ import { Hero } from "../components/sections/Hero";
 import { About } from "../components/sections/About";
 import { Experience } from "../components/sections/Experience";
 import { Projects } from "../components/sections/Projects";
+import { Services } from "../components/sections/Services";
 import { Contact } from "../components/sections/Contact";
 import { NavItem } from "../types";
 
@@ -35,6 +37,12 @@ const SECTIONS_CONFIG: NavItem[] = [
     label: "Projects",
     component: <Projects />,
     icon: FolderGit2,
+  },
+  {
+    id: "services",
+    label: "Services",
+    component: <Services />,
+    icon: Tag,
   },
   {
     id: "contact",
