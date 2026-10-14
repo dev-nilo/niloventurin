@@ -60,9 +60,9 @@ export const PROFILE: Profile = {
   location: "Vitória, ES, Brazil",
   workMode: "Open to remote",
   metaDescription:
-    "Nilo Venturin Neto, full-stack software engineer in Brazil. Web apps in TypeScript with React and Next.js, APIs in Node.js, on PostgreSQL.",
+    "Nilo Venturin Neto, full-stack software engineer in Brazil. Web apps in TypeScript with React and Next.js, APIs in Node.js and Java/Spring Boot, on PostgreSQL.",
   summary: [
-    "I build web apps in TypeScript with React, Next.js and Angular, and APIs in Node.js, on PostgreSQL and Oracle. I use Claude Code every day, with context files and decision records in each repo, and ship in small, reviewed pull requests.",
+    "I build web apps in TypeScript with React, Next.js and Angular, and APIs in Node.js and Java/Spring Boot, on PostgreSQL and Oracle. I use Claude Code every day, with context files and decision records in each repo, and ship in small, reviewed pull requests.",
     "I also have a background in access governance, so I build features already thinking about who can access them and how they'll be audited.",
   ],
   stats: [
@@ -94,6 +94,20 @@ export const PROFILE: Profile = {
       secondary: [
         "TOTVS RM customizations and SQL/PL-SQL programs on Oracle. The reports, integrations and scheduled jobs I built cut manual work by more than 6 hours a day.",
         "IT risk matrices, ITGC testing and remediation plans for clients' annual SOX certification.",
+      ],
+    },
+    {
+      company: "Corpo de Bombeiros Militar do Espírito Santo (CBMES)",
+      role: "Software Engineer",
+      period: "Mar 2026 – Present",
+      location: "Vitória, ES, Brazil",
+      highlights: [
+        "Lead developer of ISEO (Java 25/Spring Boot, Angular 20), the system that runs the corporation's paid supplementary shifts end to end. It models the organization itself: units and duty posts, team compositions by role, ranks and seniority synced from the personnel registry, and each firefighter's qualifications and eligibility.",
+        "Monthly planning in one place: fixed and one-off shifts, batch call-ups, voluntary sign-ups with a fairness-ordered draw, compulsory assignment, swaps, monthly limits and notifications. Rule overrides require explicit permissions and are audit-logged.",
+        "Co-develop the central authentication BFF for CBMES apps: OAuth2/OIDC with Keycloak, tokens kept server-side, HttpOnly sessions shared across apps through Redis.",
+      ],
+      secondary: [
+        "26 Flyway migrations on PostgreSQL with an Oracle mirror, JUnit and Angular tests, architecture decision records, and Docker deploys through GitHub Actions.",
       ],
     },
     {
