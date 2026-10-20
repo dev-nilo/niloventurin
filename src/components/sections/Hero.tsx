@@ -2,7 +2,7 @@ import { Download } from "lucide-react";
 import { Linkedin } from "../ui/BrandIcons";
 import { Button } from "../ui/Button";
 import { Marquee } from "../ui/Marquee";
-import Grainient from "../ui/Grainient";
+import { HeroBackground } from "../ui/HeroBackground";
 import { FULL_SCREEN } from "../layout/Section";
 import { PROFILE } from "../../content/profile";
 
@@ -12,17 +12,9 @@ const roleAccent = PROFILE.role.slice(roleLead.length);
 
 const STACK = [...new Set(PROFILE.skillGroups.flatMap((group) => group.items))];
 
-// React Bits "satin" preset.
-const SATIN = ["#0c0c0f", "#3f3f46", "#a1a1aa", "#fafafa"];
-
-// The satin background is dark, so the hero always uses the dark palette
-// (the .dark class swaps the color variables for this subtree only).
 export const Hero = () => (
-  <section id="home" className={`dark relative isolate overflow-hidden bg-bg text-ink scroll-mt-12 ${FULL_SCREEN}`}>
-    <Grainient colors={SATIN} angle={40} bands={2} silk={1} className="absolute! inset-0 -z-10" />
-    {/* Keeps text readable over the bright satin bands: an even veil on
-        narrow screens, a fade from the text side on wider ones. */}
-    <div className="pointer-events-none absolute inset-0 -z-10 bg-[#0c0c0f]/60 md:bg-transparent md:bg-[linear-gradient(90deg,rgb(12_12_15/0.85)_0%,rgb(12_12_15/0.6)_45%,transparent_85%)]" />
+  <section id="home" className={`relative isolate overflow-hidden scroll-mt-12 ${FULL_SCREEN}`}>
+    <HeroBackground />
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 py-14 sm:px-6 md:py-20">
       <p className="hud-label mb-8 flex items-center gap-2 text-muted">
         <span className="size-1.5 bg-cyan-500" />
