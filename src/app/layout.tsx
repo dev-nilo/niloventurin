@@ -4,6 +4,7 @@ import "./globals.css";
 import { PROFILE } from "../content/profile";
 import { themeInitScript } from "../theme/theme";
 import { ENVIRONMENT, isIndexable } from "../environment/environment";
+import { RevealObserver } from "../components/ui/RevealObserver";
 
 const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo" });
 const instrumentSerif = Instrument_Serif({
@@ -33,8 +34,13 @@ export default function RootLayout({
         >
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+                {/* Reveal animations hide content only when JS is there to show it. */}
+                <script dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add("js")` }} />
             </head>
-            <body className="font-sans antialiased transition-colors duration-300">{children}</body>
+            <body className="font-sans antialiased transition-colors duration-300">
+                {children}
+                <RevealObserver />
+            </body>
         </html>
     );
 }

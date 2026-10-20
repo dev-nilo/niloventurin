@@ -1,16 +1,16 @@
 import { CSSProperties, Fragment, ReactNode } from "react";
 
 // Splits a heading into words that rise from behind their own mask, one
-// after another. "scroll" ties the rise to the heading scrolling into view;
-// "load" plays it once on page load, for headings already on screen. Screen
+// after another. "view" plays the rise when the heading scrolls into view;
+// "load" plays it on page load, for headings already on screen. Screen
 // readers get the plain text.
 export const MaskedText = ({
   text,
-  mode = "scroll",
+  mode = "view",
   suffix,
 }: {
   text: string;
-  mode?: "scroll" | "load";
+  mode?: "view" | "load";
   suffix?: ReactNode;
 }) => {
   const words = text.split(" ");
@@ -18,7 +18,7 @@ export const MaskedText = ({
   return (
     <>
       <span className="sr-only">{text}</span>
-      <span aria-hidden="true" className={mode === "scroll" ? "mask-scroll-root block" : "block"}>
+      <span aria-hidden="true" className={mode === "view" ? "mask-root block" : "block"}>
         {words.map((word, i) => (
           <Fragment key={i}>
             {i > 0 && " "}
