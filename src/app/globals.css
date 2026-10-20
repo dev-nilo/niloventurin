@@ -68,6 +68,31 @@
   animation: marquee-scroll 40s linear infinite;
 }
 
+/*
+  Scroll-linked reveal: the element fades and rises over the first 240px of
+  scroll after its top enters the viewport, so progress tracks the scroll
+  position instead of a timer. --reveal-i shifts that window for cells in
+  the same row, staggering them. Browsers without scroll-driven animations,
+  and reduced-motion users, just see the content.
+*/
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(2.5rem);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      --reveal-shift: calc(var(--reveal-i, 0) * 60px);
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry var(--reveal-shift) entry calc(240px + var(--reveal-shift));
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

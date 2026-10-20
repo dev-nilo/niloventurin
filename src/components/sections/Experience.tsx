@@ -5,7 +5,7 @@ export const Experience = () => (
   <Section id="experience" index={2} title="Experience">
     <ol className="border-t border-line">
       {PROFILE.experience.map((job) => (
-        <li key={job.company} className="grid gap-x-10 gap-y-3 border-b border-line py-8 md:grid-cols-[13rem_1fr]">
+        <li key={job.company} className="reveal grid gap-x-10 gap-y-3 border-b border-line py-8 md:grid-cols-[13rem_1fr]">
           <div className="hud-label space-y-1 text-muted">
             <p>{job.period}</p>
             <p>{job.location}</p>

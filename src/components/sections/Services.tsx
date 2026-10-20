@@ -1,6 +1,6 @@
 import { Download } from "lucide-react";
 import { Button } from "../ui/Button";
-import { Section, padIndex } from "../layout/Section";
+import { Section, padIndex, stagger } from "../layout/Section";
 import { SERVICES } from "../../content/services";
 
 export const Services = () => (
@@ -19,7 +19,8 @@ export const Services = () => (
       {SERVICES.items.map((service, index) => (
         <article
           key={service.name}
-          className="flex flex-col border-r border-b border-line p-6 transition-colors hover:bg-ink/[0.03]"
+          style={stagger(index % 4)}
+          className="reveal flex flex-col border-r border-b border-line p-6 transition-colors hover:bg-ink/[0.03]"
         >
           <span className="hud-label mb-8 text-muted">{padIndex(index + 1)}</span>
           <h3 className="text-xl font-semibold tracking-tight">{service.name}</h3>
@@ -40,7 +41,7 @@ export const Services = () => (
       ))}
     </div>
 
-    <p className="mt-8 text-sm text-muted">
+    <p className="reveal mt-8 text-sm text-muted">
       Optional maintenance:{" "}
       {SERVICES.maintenance.map((plan, index) => (
         <span key={plan.name}>
