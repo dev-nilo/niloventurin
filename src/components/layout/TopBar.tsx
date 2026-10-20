@@ -7,6 +7,7 @@ import { AppLink } from "../ui/AppLink";
 import { useTheme } from "../../context/ThemeContext";
 import { useActiveSection } from "../../navigation/useActiveSection";
 import { PROFILE } from "../../content/profile";
+import { GLASS } from "./Section";
 
 interface NavItem {
   id: string;
@@ -23,7 +24,7 @@ export const TopBar = ({ items, environment }: { items: NavItem[]; environment: 
   const activeId = ids[useActiveSection(ids)];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-bg/95 backdrop-blur-sm">
+    <header className={`sticky top-0 z-50 border-b border-line ${GLASS}`}>
       <div className="flex h-12 items-stretch justify-between">
         <div className="flex min-w-0 items-stretch">
           <a

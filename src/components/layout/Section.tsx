@@ -10,8 +10,12 @@ export const padIndex = (n: number) => String(n).padStart(2, "0");
 // Offsets a .reveal element's scroll window so siblings enter one after another.
 export const stagger = (i: number) => ({ "--reveal-i": i }) as CSSProperties;
 
-// Shared frame for the numbered sections: a hairline on top, the "01/"
-// label above the title, and an optional action on the right.
+// Frosted glass for bars that content scrolls under.
+export const GLASS = "bg-bg/60 backdrop-blur-xl backdrop-saturate-150";
+
+// Shared frame for the numbered sections. The "01/" label and title form a
+// glass bar that sticks under the 3rem top bar while the section scrolls
+// past; the intro, action and content scroll beneath it.
 export const Section = ({
   id,
   index,
@@ -28,25 +32,29 @@ export const Section = ({
   children: ReactNode;
 }) => (
   <section id={id} className={`scroll-mt-12 border-t border-line ${FULL_SCREEN}`}>
-    <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 md:py-24">
-      <header className="mb-10 flex flex-col justify-between gap-6 md:mb-14 md:flex-row md:items-end">
-        <div>
-          <p className="reveal hud-label mb-4 text-muted">{padIndex(index)}/</p>
-          <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
-            <MaskedText text={title} />
-          </h2>
+    <header className={`sticky top-12 z-40 border-b border-line ${GLASS}`}>
+      <div className="mx-auto flex w-full max-w-6xl items-baseline gap-4 px-4 py-4 sm:px-6 md:py-5">
+        <p className="reveal hud-label text-muted">{padIndex(index)}/</p>
+        <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
+          <MaskedText text={title} />
+        </h2>
+      </div>
+    </header>
+    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 py-12 sm:px-6 md:py-16">
+      {(intro || action) && (
+        <div className="mb-10 flex flex-col justify-between gap-6 md:mb-14 md:flex-row md:items-end">
           {intro && (
-            <p className="reveal mt-4 max-w-xl text-muted" style={stagger(2)}>
+            <p className="reveal max-w-xl text-muted" style={stagger(1)}>
               {intro}
             </p>
           )}
+          {action && (
+            <div className="reveal" style={stagger(2)}>
+              {action}
+            </div>
+          )}
         </div>
-        {action && (
-          <div className="reveal" style={stagger(1)}>
-            {action}
-          </div>
-        )}
-      </header>
+      )}
       {children}
     </div>
   </section>
