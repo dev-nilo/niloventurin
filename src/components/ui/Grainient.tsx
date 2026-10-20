@@ -1,7 +1,8 @@
 'use client';
 
 // Grainient background from React Bits (https://reactbits.dev/backgrounds/grainient),
-// vendored unchanged apart from this note. MIT + Commons Clause, (c) David Haz.
+// vendored with one addition: `lightBase`, the color lightMode uses in place
+// of pure white. MIT + Commons Clause, (c) David Haz.
 
 import { useEffect, useRef, type CSSProperties, type HTMLAttributes } from 'react';
 
@@ -28,6 +29,7 @@ export interface GrainientProps extends Omit<HTMLAttributes<HTMLDivElement>, 'st
   clickSwirl?: boolean;
   intro?: boolean;
   lightMode?: boolean;
+  lightBase?: string;
   dpr?: number;
   style?: CSSProperties;
 }
@@ -53,6 +55,7 @@ type Settings = {
   clickSwirl: boolean;
   intro: boolean;
   lightMode: boolean;
+  lightBase: string;
   dpr?: number;
 };
 
@@ -332,6 +335,7 @@ const Grainient = ({
   clickSwirl = true,
   intro = true,
   lightMode = false,
+  lightBase = '#ffffff',
   dpr,
   className = '',
   style,
@@ -362,6 +366,7 @@ const Grainient = ({
     clickSwirl,
     intro,
     lightMode,
+    lightBase,
     dpr
   };
   const settingsRef = useRef(settings);
@@ -432,7 +437,7 @@ const Grainient = ({
 
     const syncPalette = () => {
       const s = settingsRef.current;
-      const key = `${s.colors.join(',')}|${s.lightMode}`;
+      const key = `${s.colors.join(',')}|${s.lightMode}|${s.lightBase}`;
       if (key === paletteKey) return;
       paletteKey = key;
       const labs = s.colors.map(color => toLab(parse(color)));
@@ -441,8 +446,13 @@ const Grainient = ({
       } else {
         const blank = labs.map(([L]) => Math.abs(L - labs[0][0]) < 0.1);
         const tints = labs.filter((_, i) => !blank[i]).reverse();
+        const base = toLab(parse(s.lightBase));
         labs.forEach((_, i) => {
-          const [L, a, b] = blank[i] ? [1, 0, 0] : (tints.shift() as number[]);
+          if (blank[i]) {
+            ramp.set(base, i * 3);
+            return;
+          }
+          const [L, a, b] = tints.shift() as number[];
           ramp.set([L + (1 - L) * LIFT, a * (1 - LIFT), b * (1 - LIFT)], i * 3);
         });
       }
