@@ -2,7 +2,7 @@ import { ExternalLink } from "lucide-react";
 import { Github } from "../ui/BrandIcons";
 import { AppLink } from "../ui/AppLink";
 import { Button } from "../ui/Button";
-import { Section, padIndex } from "../layout/Section";
+import { Section, padIndex, stagger } from "../layout/Section";
 import { PROFILE } from "../../content/profile";
 
 const ICON_LINK = "p-2 text-muted hover:bg-ink hover:text-bg";
@@ -23,7 +23,8 @@ export const Projects = () => (
       {PROFILE.projects.map((project, index) => (
         <article
           key={project.name}
-          className="flex flex-col border-r border-b border-line p-6 transition-colors hover:bg-ink/[0.03] md:p-8"
+          style={stagger(index % 2)}
+          className="reveal flex flex-col border-r border-b border-line p-6 transition-colors hover:bg-ink/[0.03] md:p-8"
         >
           <div className="mb-10 flex items-start justify-between">
             <span className="hud-label text-muted">{padIndex(index + 1)}</span>
@@ -51,7 +52,7 @@ export const Projects = () => (
       ))}
     </div>
 
-    <p className="mt-8 text-sm text-muted">
+    <p className="reveal mt-8 text-sm text-muted">
       Also:{" "}
       {PROFILE.otherProjects.map((project, index) => (
         <span key={project.name}>
