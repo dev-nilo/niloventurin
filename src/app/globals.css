@@ -69,26 +69,37 @@
 }
 
 /*
-  Scroll-linked reveal: the element fades and rises over the first 240px of
-  scroll after its top enters the viewport, so progress tracks the scroll
-  position instead of a timer. --reveal-i shifts that window for cells in
-  the same row, staggering them. Browsers without scroll-driven animations,
-  and reduced-motion users, just see the content.
+  Scroll-linked reveal: the element rises while a clip uncovers it from the
+  bottom up. It starts once its top is 5vh above the bottom of the viewport
+  and finishes around the middle of the screen, where the reader is looking,
+  so progress tracks the scroll position instead of a timer. --reveal-i
+  shifts that window for cells in the same row, staggering them. Browsers
+  without scroll-driven animations, and reduced-motion users, just see the
+  content.
 */
 @keyframes reveal {
-  from {
+  0% {
     opacity: 0;
-    transform: translateY(2.5rem);
+    transform: translateY(5rem);
+    clip-path: inset(100% 0 0 0);
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 0 0);
   }
 }
 
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .reveal {
-      --reveal-shift: calc(var(--reveal-i, 0) * 60px);
-      animation: reveal linear both;
+      --reveal-shift: calc(var(--reveal-i, 0) * 8vh);
+      animation: reveal cubic-bezier(0.25, 1, 0.5, 1) both;
       animation-timeline: view();
-      animation-range: entry var(--reveal-shift) entry calc(240px + var(--reveal-shift));
+      animation-range: cover calc(5vh + var(--reveal-shift)) cover calc(50vh + var(--reveal-shift));
     }
   }
 }
@@ -129,10 +140,10 @@
     }
 
     .mask-scroll {
-      --mask-shift: calc(var(--w, 0) * 50px);
-      animation: mask-rise cubic-bezier(0.2, 0.7, 0, 1) both;
+      --mask-shift: calc(var(--w, 0) * 6vh);
+      animation: mask-rise cubic-bezier(0.25, 1, 0.5, 1) both;
       animation-timeline: --mask;
-      animation-range: entry calc(40px + var(--mask-shift)) entry calc(320px + var(--mask-shift));
+      animation-range: cover calc(5vh + var(--mask-shift)) cover calc(45vh + var(--mask-shift));
     }
   }
 }
