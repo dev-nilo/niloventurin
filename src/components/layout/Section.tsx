@@ -1,4 +1,5 @@
 import { CSSProperties, ReactNode } from "react";
+import { MaskedText } from "../ui/MaskedText";
 
 export const padIndex = (n: number) => String(n).padStart(2, "0");
 
@@ -17,7 +18,7 @@ export const Section = ({
 }: {
   id: string;
   index: number;
-  title: ReactNode;
+  title: string;
   intro?: string;
   action?: ReactNode;
   children: ReactNode;
@@ -27,8 +28,8 @@ export const Section = ({
       <header className="mb-10 flex flex-col justify-between gap-6 md:mb-14 md:flex-row md:items-end">
         <div>
           <p className="reveal hud-label mb-4 text-muted">{padIndex(index)}/</p>
-          <h2 className="reveal text-4xl font-semibold tracking-tight md:text-6xl" style={stagger(1)}>
-            {title}
+          <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
+            <MaskedText text={title} />
           </h2>
           {intro && (
             <p className="reveal mt-4 max-w-xl text-muted" style={stagger(2)}>
