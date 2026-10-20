@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Home as HomeIcon,
   User,
@@ -11,10 +10,10 @@ import {
 } from "lucide-react";
 
 import { ThemeProvider } from "../context/ThemeContext";
-import { useSectionNavigator } from "../navigation/useSectionNavigator";
-import { useNavigationGestures } from "../navigation/useNavigationGestures";
+import { useScrollSections } from "../navigation/useScrollSections";
 import { TopBar } from "../components/layout/TopBar";
 import { Dock } from "../components/layout/Dock";
+import { ScrollSection } from "../components/layout/ScrollSection";
 import { Hero } from "../components/sections/Hero";
 import { About } from "../components/sections/About";
 import { Experience } from "../components/sections/Experience";
@@ -53,8 +52,7 @@ const SECTIONS_CONFIG: NavItem[] = [
 ];
 
 export default function Home() {
-  const sections = useSectionNavigator(SECTIONS_CONFIG.length);
-  useNavigationGestures(sections);
+  const sections = useScrollSections(SECTIONS_CONFIG.length);
   const currentSection = sections.index;
 
   return (
@@ -67,19 +65,19 @@ export default function Home() {
       <div className="bg-white dark:bg-zinc-950 h-screen w-full text-zinc-900 dark:text-zinc-100 transition-colors duration-300 overflow-hidden flex flex-col">
         {/* <TopBar onLogoClick={() => setCurrentSection(0)} /> */}
 
-        <main className="flex-1 relative w-full h-full overflow-y-auto overflow-x-hidden pb-24">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={currentSection}
-              initial={{ opacity: 0, scale: 0.95, y: 20, filter: "blur(10px)" }}
-              animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 1.05, y: -20, filter: "blur(10px)" }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full h-full absolute top-0 left-0"
+        <main
+          ref={sections.containerRef}
+          className="no-scrollbar flex-1 relative w-full h-full overflow-y-auto overflow-x-hidden snap-y snap-mandatory"
+        >
+          {SECTIONS_CONFIG.map((section, index) => (
+            <ScrollSection
+              key={section.id}
+              container={sections.containerRef}
+              sectionRef={sections.sectionRefs[index]}
             >
-              {SECTIONS_CONFIG[currentSection].component}
-            </motion.div>
-          </AnimatePresence>
+              {section.component}
+            </ScrollSection>
+          ))}
         </main>
 
         <Dock
