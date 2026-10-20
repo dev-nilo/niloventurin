@@ -1,91 +1,43 @@
-"use client";
-
-import {
-  Home as HomeIcon,
-  User,
-  Briefcase,
-  FolderGit2,
-  MessageSquare,
-  Tag,
-} from "lucide-react";
-
 import { ThemeProvider } from "../context/ThemeContext";
-import { useScrollSections } from "../navigation/useScrollSections";
+import { ENVIRONMENT, environmentLabel } from "../environment/environment";
+import { PROFILE } from "../content/profile";
 import { TopBar } from "../components/layout/TopBar";
-import { Dock } from "../components/layout/Dock";
-import { ScrollSection } from "../components/layout/ScrollSection";
+import { Footer } from "../components/layout/Footer";
+import { Marquee } from "../components/ui/Marquee";
 import { Hero } from "../components/sections/Hero";
 import { About } from "../components/sections/About";
 import { Experience } from "../components/sections/Experience";
 import { Projects } from "../components/sections/Projects";
 import { Services } from "../components/sections/Services";
 import { Contact } from "../components/sections/Contact";
-import { NavItem } from "../types";
 
-const SECTIONS_CONFIG: NavItem[] = [
-  { id: "home", label: "Home", component: <Hero />, icon: HomeIcon },
-  { id: "about", label: "About", component: <About />, icon: User },
-  {
-    id: "experience",
-    label: "Experience",
-    component: <Experience />,
-    icon: Briefcase,
-  },
-  {
-    id: "projects",
-    label: "Projects",
-    component: <Projects />,
-    icon: FolderGit2,
-  },
-  {
-    id: "services",
-    label: "Services",
-    component: <Services />,
-    icon: Tag,
-  },
-  {
-    id: "contact",
-    label: "Contact",
-    component: <Contact />,
-    icon: MessageSquare,
-  },
+// Ids double as anchors; the hero comes first so the top bar can tell when
+// none of the numbered sections is on screen yet.
+const NAV_ITEMS = [
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "services", label: "Services" },
+  { id: "contact", label: "Contact" },
 ];
 
-export default function Home() {
-  const sections = useScrollSections(SECTIONS_CONFIG.length);
-  const currentSection = sections.index;
+const STACK = [...new Set(PROFILE.skillGroups.flatMap((group) => group.items))];
 
+export default function Home() {
   return (
     <ThemeProvider>
-      <style>{`
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
-
-      <div className="bg-white dark:bg-zinc-950 h-screen w-full text-zinc-900 dark:text-zinc-100 transition-colors duration-300 overflow-hidden flex flex-col">
-        {/* <TopBar onLogoClick={() => setCurrentSection(0)} /> */}
-
-        <main
-          ref={sections.containerRef}
-          className="no-scrollbar flex-1 relative w-full h-full overflow-y-auto overflow-x-hidden snap-y snap-mandatory"
-        >
-          {SECTIONS_CONFIG.map((section, index) => (
-            <ScrollSection
-              key={section.id}
-              container={sections.containerRef}
-              sectionRef={sections.sectionRefs[index]}
-            >
-              {section.component}
-            </ScrollSection>
-          ))}
-        </main>
-
-        <Dock
-          items={SECTIONS_CONFIG}
-          activeIndex={currentSection}
-          onSelect={sections.goTo}
-        />
-      </div>
+      {/* ENVIRONMENT reads server-only env vars, so the label is resolved here. */}
+      <TopBar items={NAV_ITEMS} environment={environmentLabel(ENVIRONMENT)} />
+      <main>
+        <Hero />
+        <Marquee items={STACK} />
+        <About />
+        <Experience />
+        <Projects />
+        <Services />
+        <Contact />
+      </main>
+      <Footer />
     </ThemeProvider>
   );
 }
