@@ -1,15 +1,19 @@
 import { Download } from "lucide-react";
 import { Linkedin } from "../ui/BrandIcons";
 import { Button } from "../ui/Button";
+import { Marquee } from "../ui/Marquee";
+import { FULL_SCREEN } from "../layout/Section";
 import { PROFILE } from "../../content/profile";
 
 // The last word of the role is set in the serif italic as an accent.
 const roleLead = PROFILE.role.slice(0, PROFILE.role.lastIndexOf(" ") + 1);
 const roleAccent = PROFILE.role.slice(roleLead.length);
 
+const STACK = [...new Set(PROFILE.skillGroups.flatMap((group) => group.items))];
+
 export const Hero = () => (
-  <section id="home" className="scroll-mt-12">
-    <div className="mx-auto max-w-6xl px-4 pt-16 pb-14 sm:px-6 md:pt-28 md:pb-20">
+  <section id="home" className={`scroll-mt-12 ${FULL_SCREEN}`}>
+    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 py-14 sm:px-6 md:py-20">
       <p className="hud-label mb-8 flex items-center gap-2 text-muted">
         <span className="size-1.5 bg-cyan-500" />
         {PROFILE.location} · {PROFILE.workMode}
@@ -40,5 +44,7 @@ export const Hero = () => (
         ))}
       </dl>
     </div>
+    {/* Pinned to the bottom of the first screen. */}
+    <Marquee items={STACK} />
   </section>
 );

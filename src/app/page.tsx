@@ -1,9 +1,7 @@
 import { ThemeProvider } from "../context/ThemeContext";
 import { ENVIRONMENT, environmentLabel } from "../environment/environment";
-import { PROFILE } from "../content/profile";
 import { TopBar } from "../components/layout/TopBar";
 import { Footer } from "../components/layout/Footer";
-import { Marquee } from "../components/ui/Marquee";
 import { Hero } from "../components/sections/Hero";
 import { About } from "../components/sections/About";
 import { Experience } from "../components/sections/Experience";
@@ -21,8 +19,6 @@ const NAV_ITEMS = [
   { id: "contact", label: "Contact" },
 ];
 
-const STACK = [...new Set(PROFILE.skillGroups.flatMap((group) => group.items))];
-
 export default function Home() {
   return (
     <ThemeProvider>
@@ -30,7 +26,6 @@ export default function Home() {
       <TopBar items={NAV_ITEMS} environment={environmentLabel(ENVIRONMENT)} />
       <main>
         <Hero />
-        <Marquee items={STACK} />
         <About />
         <Experience />
         <Projects />
