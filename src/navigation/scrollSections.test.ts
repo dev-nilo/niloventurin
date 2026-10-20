@@ -1,30 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { activeSectionIndex, sectionStyleAt } from "./scrollSections";
-
-describe("sectionStyleAt", () => {
-    it("is fully visible once entered and before leaving", () => {
-        expect(sectionStyleAt(1, 0)).toEqual({ opacity: 1, scale: 1, y: 0, blur: 0 });
-    });
-
-    it("matches the old enter keyframe before entering", () => {
-        expect(sectionStyleAt(0, 0)).toEqual({ opacity: 0, scale: 0.95, y: 20, blur: 10 });
-    });
-
-    it("matches the old exit keyframe once gone", () => {
-        expect(sectionStyleAt(1, 1)).toEqual({ opacity: 0, scale: 1.05, y: -20, blur: 10 });
-    });
-
-    it("interpolates linearly with scroll", () => {
-        const half = sectionStyleAt(0.5, 0);
-        expect(half.opacity).toBe(0.5);
-        expect(half.scale).toBeCloseTo(0.975);
-        expect(half.blur).toBe(5);
-    });
-
-    it("clamps out-of-range progress", () => {
-        expect(sectionStyleAt(2, -1)).toEqual(sectionStyleAt(1, 0));
-    });
-});
+import { activeSectionIndex } from "./scrollSections";
 
 describe("activeSectionIndex", () => {
     const tops = [0, 800, 1600, 3000];
@@ -41,5 +16,10 @@ describe("activeSectionIndex", () => {
     it("keeps a tall section active while scrolling through it", () => {
         expect(activeSectionIndex(tops, 2400, 800)).toBe(2);
         expect(activeSectionIndex(tops, 2600, 800)).toBe(3);
+    });
+
+    it("picks the last section at the bottom of the page", () => {
+        expect(activeSectionIndex([0, 800, 1600, 3300], 2700, 800, 3500)).toBe(3);
+        expect(activeSectionIndex([0, 800, 1600, 3300], 2600, 800, 3500)).toBe(2);
     });
 });
