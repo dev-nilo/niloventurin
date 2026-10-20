@@ -29,7 +29,7 @@
 
 @utility hud-label {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 0.6875rem;
   line-height: 1.4;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -44,8 +44,14 @@
     border-color: var(--line);
   }
 
+  /*
+    Everything is sized in rem, so this scales the whole layout: 16px up to
+    1024px wide, growing linearly to 20px (125%) at 1920px and beyond, so
+    wide screens don't get a small layout lost in empty margins.
+  */
   html {
     scroll-behavior: smooth;
+    font-size: clamp(1rem, 0.7143rem + 0.4464vw, 1.25rem);
   }
 
   body {

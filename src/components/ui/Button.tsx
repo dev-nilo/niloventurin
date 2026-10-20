@@ -5,7 +5,7 @@ type Variant = "solid" | "outline";
 
 const BASE = `
   inline-flex h-11 items-center justify-center gap-2 px-5
-  font-mono text-[11px] font-bold uppercase tracking-[0.12em] whitespace-nowrap
+  font-mono text-[0.6875rem] font-bold uppercase tracking-[0.12em] whitespace-nowrap
   border border-ink transition-colors duration-150 cursor-pointer select-none
 `;
 
