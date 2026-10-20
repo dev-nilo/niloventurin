@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque } from "next/font/google";
+import { Archivo, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { PROFILE } from "../content/profile";
 import { themeInitScript } from "../theme/theme";
 import { ENVIRONMENT, isIndexable } from "../environment/environment";
-import { EnvironmentBanner } from "../components/layout/EnvironmentBanner";
 
-const bricolage = Bricolage_Grotesque({ subsets: ["latin"] });
+const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo" });
+const instrumentSerif = Instrument_Serif({
+    subsets: ["latin"],
+    weight: "400",
+    style: ["normal", "italic"],
+    variable: "--font-instrument-serif",
+});
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
 export const metadata: Metadata = {
     title: `${PROFILE.name} · ${PROFILE.role}`,
@@ -20,14 +26,15 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html
+            lang="en"
+            suppressHydrationWarning
+            className={`${archivo.variable} ${instrumentSerif.variable} ${geistMono.variable}`}
+        >
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
             </head>
-            <body className={bricolage.className}>
-                {children}
-                <EnvironmentBanner />
-            </body>
+            <body className="font-sans antialiased transition-colors duration-300">{children}</body>
         </html>
     );
 }

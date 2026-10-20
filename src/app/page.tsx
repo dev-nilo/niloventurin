@@ -1,93 +1,43 @@
-"use client";
-
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Home as HomeIcon,
-  User,
-  Briefcase,
-  FolderGit2,
-  MessageSquare,
-  Tag,
-} from "lucide-react";
-
 import { ThemeProvider } from "../context/ThemeContext";
-import { useSectionNavigator } from "../navigation/useSectionNavigator";
-import { useNavigationGestures } from "../navigation/useNavigationGestures";
+import { ENVIRONMENT, environmentLabel } from "../environment/environment";
+import { PROFILE } from "../content/profile";
 import { TopBar } from "../components/layout/TopBar";
-import { Dock } from "../components/layout/Dock";
+import { Footer } from "../components/layout/Footer";
+import { Marquee } from "../components/ui/Marquee";
 import { Hero } from "../components/sections/Hero";
 import { About } from "../components/sections/About";
 import { Experience } from "../components/sections/Experience";
 import { Projects } from "../components/sections/Projects";
 import { Services } from "../components/sections/Services";
 import { Contact } from "../components/sections/Contact";
-import { NavItem } from "../types";
 
-const SECTIONS_CONFIG: NavItem[] = [
-  { id: "home", label: "Home", component: <Hero />, icon: HomeIcon },
-  { id: "about", label: "About", component: <About />, icon: User },
-  {
-    id: "experience",
-    label: "Experience",
-    component: <Experience />,
-    icon: Briefcase,
-  },
-  {
-    id: "projects",
-    label: "Projects",
-    component: <Projects />,
-    icon: FolderGit2,
-  },
-  {
-    id: "services",
-    label: "Services",
-    component: <Services />,
-    icon: Tag,
-  },
-  {
-    id: "contact",
-    label: "Contact",
-    component: <Contact />,
-    icon: MessageSquare,
-  },
+// Ids double as anchors; the hero comes first so the top bar can tell when
+// none of the numbered sections is on screen yet.
+const NAV_ITEMS = [
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "services", label: "Services" },
+  { id: "contact", label: "Contact" },
 ];
 
-export default function Home() {
-  const sections = useSectionNavigator(SECTIONS_CONFIG.length);
-  useNavigationGestures(sections);
-  const currentSection = sections.index;
+const STACK = [...new Set(PROFILE.skillGroups.flatMap((group) => group.items))];
 
+export default function Home() {
   return (
     <ThemeProvider>
-      <style>{`
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
-
-      <div className="bg-white dark:bg-zinc-950 h-screen w-full text-zinc-900 dark:text-zinc-100 transition-colors duration-300 overflow-hidden flex flex-col">
-        {/* <TopBar onLogoClick={() => setCurrentSection(0)} /> */}
-
-        <main className="flex-1 relative w-full h-full overflow-y-auto overflow-x-hidden pb-24">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={currentSection}
-              initial={{ opacity: 0, scale: 0.95, y: 20, filter: "blur(10px)" }}
-              animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 1.05, y: -20, filter: "blur(10px)" }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full h-full absolute top-0 left-0"
-            >
-              {SECTIONS_CONFIG[currentSection].component}
-            </motion.div>
-          </AnimatePresence>
-        </main>
-
-        <Dock
-          items={SECTIONS_CONFIG}
-          activeIndex={currentSection}
-          onSelect={sections.goTo}
-        />
-      </div>
+      {/* ENVIRONMENT reads server-only env vars, so the label is resolved here. */}
+      <TopBar items={NAV_ITEMS} environment={environmentLabel(ENVIRONMENT)} />
+      <main>
+        <Hero />
+        <Marquee items={STACK} />
+        <About />
+        <Experience />
+        <Projects />
+        <Services />
+        <Contact />
+      </main>
+      <Footer />
     </ThemeProvider>
   );
 }

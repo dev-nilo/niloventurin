@@ -2,34 +2,78 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme {
-  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
-  --background-image-gradient-conic: conic-gradient(
-    from 180deg at 50% 50%,
-    var(--tw-gradient-stops)
-  );
+/* Colors are CSS variables so dark mode is a single swap on <html>. */
+:root {
+  --bg: #f2f1ee;
+  --ink: #101014;
+  --muted: #6b6a66;
+  --line: rgb(16 16 20 / 0.14);
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+.dark {
+  --bg: #101014;
+  --ink: #f2f1ee;
+  --muted: #9a9993;
+  --line: rgb(242 241 238 / 0.14);
+}
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+@theme inline {
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@utility hud-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  ::selection {
+    @apply bg-cyan-500 text-white;
   }
 }
 
-@layer base {
-  ::selection {
-    @apply bg-cyan-500 text-white;
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  animation: marquee-scroll 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee {
+    animation: none;
   }
 }

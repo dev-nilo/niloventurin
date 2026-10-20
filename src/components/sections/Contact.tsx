@@ -1,38 +1,28 @@
 import { Mail } from "lucide-react";
 import { Linkedin } from "../ui/BrandIcons";
-import { NeoButton } from "../ui/NeoButton";
+import { Button } from "../ui/Button";
+import { padIndex } from "../layout/Section";
 import { PROFILE } from "../../content/profile";
 
+// Closing call to action: same frame as the other sections, but the title
+// takes the whole width instead of sharing it with an action.
 export const Contact = () => (
-  <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center items-center text-center px-6 py-8 md:py-0 relative">
-    <div className="mb-10">
-      <span className="inline-block py-1 px-3 rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 text-sm font-bold mb-4">
-        {PROFILE.workMode} · {PROFILE.location}
-      </span>
-      <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-900 dark:text-zinc-100 mb-6">
-        Contact
+  <section id="contact" className="scroll-mt-12 border-t border-line">
+    <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-32">
+      <p className="hud-label mb-6 text-muted">{padIndex(5)}/</p>
+      <h2 className="text-6xl leading-[0.9] font-semibold tracking-tighter md:text-8xl lg:text-9xl">
+        Contact<span className="text-cyan-500">.</span>
       </h2>
-      <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-xl mx-auto mb-10">
-        {PROFILE.contact.pitch}
-      </p>
+      <p className="mt-8 max-w-xl text-lg text-muted md:text-xl">{PROFILE.contact.pitch}</p>
 
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <NeoButton href={`mailto:${PROFILE.contact.email}`} className="text-lg px-8 py-4">
-          <Mail className="mr-2" /> {PROFILE.contact.email}
-        </NeoButton>
-        <NeoButton variant="outline"
-          href={PROFILE.contact.linkedin}
-          className="text-lg px-8 py-4"
-        >
-          <Linkedin className="mr-2" /> LinkedIn
-        </NeoButton>
+      <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+        <Button href={`mailto:${PROFILE.contact.email}`}>
+          <Mail size={14} /> {PROFILE.contact.email}
+        </Button>
+        <Button variant="outline" href={PROFILE.contact.linkedin}>
+          <Linkedin size={14} /> LinkedIn
+        </Button>
       </div>
     </div>
-
-    <div className="relative md:absolute md:bottom-24 lg:bottom-10 left-0 w-full flex flex-col items-center gap-4 mt-12 md:mt-0">
-      <p className="text-zinc-500 dark:text-zinc-500 text-sm">
-        © {new Date().getFullYear()} {PROFILE.fullName}.
-      </p>
-    </div>
-  </div>
+  </section>
 );
