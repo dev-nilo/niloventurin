@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Archivo, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Bricolage_Grotesque, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { PROFILE } from "../content/profile";
 import { themeInitScript } from "../theme/theme";
 import { ENVIRONMENT, isIndexable } from "../environment/environment";
 import { RevealObserver } from "../components/ui/RevealObserver";
 
-const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo" });
+const bricolage = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-bricolage" });
 const instrumentSerif = Instrument_Serif({
     subsets: ["latin"],
     weight: "400",
@@ -30,7 +30,7 @@ export default function RootLayout({
         <html
             lang="en"
             suppressHydrationWarning
-            className={`${archivo.variable} ${instrumentSerif.variable} ${geistMono.variable}`}
+            className={`${bricolage.variable} ${instrumentSerif.variable} ${geistMono.variable}`}
         >
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />

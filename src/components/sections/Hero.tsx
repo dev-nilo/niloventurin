@@ -1,7 +1,6 @@
 import { Download } from "lucide-react";
 import { Linkedin } from "../ui/BrandIcons";
 import { Button } from "../ui/Button";
-import { MaskedText } from "../ui/MaskedText";
 import { PROFILE } from "../../content/profile";
 
 // The last word of the role is set in the serif italic as an accent.
@@ -16,7 +15,7 @@ export const Hero = () => (
         {PROFILE.location} · {PROFILE.workMode}
       </p>
       <h1 className="text-6xl leading-[0.9] font-semibold tracking-tighter sm:text-7xl md:text-8xl lg:text-[7rem]">
-        <MaskedText text={PROFILE.name} mode="load" />
+        {PROFILE.name}
       </h1>
       <p className="mt-6 text-2xl tracking-tight text-muted md:text-4xl">
         {roleLead}
