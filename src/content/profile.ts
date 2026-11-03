@@ -171,11 +171,11 @@ export const PROFILE: Profile = {
   ],
   otherProjects: [
     {
-      name: "SoD Profile Validator",
-      description: "fuzzy matching of ERP permission profiles",
-      stack: ["Next.js", "TypeScript", "Drizzle ORM", "PostgreSQL", "Vitest"],
-      liveUrl: "https://sod-theta.vercel.app",
-      repoUrl: "https://github.com/dev-nilo/SoD",
+      name: "Rotina",
+      description: "daily routine app (PWA) with push reminders",
+      stack: ["JavaScript", "PWA", "Web Push", "Cloudflare Workers"],
+      liveUrl: "https://dev-nilo.github.io/rotina/",
+      repoUrl: "https://github.com/dev-nilo/rotina",
     },
     {
       name: "Pilares",
