@@ -15,7 +15,15 @@ const instrumentSerif = Instrument_Serif({
 });
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
-export const robots: Metadata["robots"] = isIndexable(ENVIRONMENT) ? undefined : { index: false, follow: false };
+// Metadata both root layouts share. Canonical and hreflang links must be
+// absolute, and Next only fills in the domain when metadataBase is set; it
+// points at production even on staging, which isn't indexed anyway.
+const productionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+
+export const BASE_METADATA: Metadata = {
+    metadataBase: productionHost ? new URL(`https://${productionHost}`) : undefined,
+    robots: isIndexable(ENVIRONMENT) ? undefined : { index: false, follow: false },
+};
 
 // The language picker and each language of the site are separate root
 // layouts (no layout sits above "/" and "/[lang]"), so both render this.

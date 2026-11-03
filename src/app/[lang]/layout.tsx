@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { RootHtml, robots } from "../../components/layout/RootHtml";
+import { BASE_METADATA, RootHtml } from "../../components/layout/RootHtml";
 import { PROFILE } from "../../content/profile";
 import { HTML_LANG, LOCALES, isLocale } from "../../i18n/locales";
 
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     return {
         title: `${profile.name} · ${profile.role}`,
         description: profile.metaDescription,
-        robots,
+        ...BASE_METADATA,
         alternates: {
             canonical: `/${lang}`,
             languages: {

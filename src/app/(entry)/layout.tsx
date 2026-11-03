@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { RootHtml, robots } from "../../components/layout/RootHtml";
+import { BASE_METADATA, RootHtml } from "../../components/layout/RootHtml";
 import { PROFILE } from "../../content/profile";
 import { HTML_LANG, LOCALES } from "../../i18n/locales";
 
 export const metadata: Metadata = {
     title: PROFILE.en.name,
     description: `${PROFILE.pt.role} · ${PROFILE.en.role}. Escolha o idioma do site · Choose the site's language.`,
-    robots,
+    ...BASE_METADATA,
     alternates: {
         languages: Object.fromEntries(LOCALES.map((locale) => [HTML_LANG[locale], `/${locale}`])),
     },
