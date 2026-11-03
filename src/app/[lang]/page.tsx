@@ -12,6 +12,8 @@ import { Experience } from "../../components/sections/Experience";
 import { Projects } from "../../components/sections/Projects";
 import { Services } from "../../components/sections/Services";
 import { Contact } from "../../components/sections/Contact";
+import { JsonLd } from "../../components/layout/JsonLd";
+import { identityGraph } from "../../agents/jsonLd";
 
 // Ids double as anchors and stay the same in every language, so switching
 // language keeps the reader on the same section.
@@ -27,6 +29,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
   return (
     <ThemeProvider>
+      <JsonLd data={identityGraph(lang)} />
       {/* ENVIRONMENT reads server-only env vars, so the label is resolved here. */}
       <TopBar
         items={SECTION_IDS.map((id) => ({ id, label: ui.nav[id] }))}
