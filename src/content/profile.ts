@@ -39,6 +39,10 @@ export interface Profile {
   location: string;
   workMode: string;
   metaDescription: string;
+  // What people search for together with the name. The first one is the main
+  // term: it leads the meta keywords and the page title. Same order in every
+  // language.
+  keywords: string[];
   summary: string[];
   stats: Stat[];
   skillGroups: SkillGroup[];
@@ -89,6 +93,17 @@ const EN: Profile = {
   workMode: "Open to remote",
   metaDescription:
     "Nilo Venturin Neto, full-stack software engineer in Brazil. Web apps in TypeScript with React and Next.js, APIs in Node.js and Java/Spring Boot, on PostgreSQL.",
+  keywords: [
+    "full-stack software engineer",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Java Spring Boot",
+    "PostgreSQL",
+    "segregation of duties",
+    "freelance web developer",
+  ],
   summary: [
     "I build web apps in TypeScript with React, Next.js and Angular, and APIs in Node.js and Java/Spring Boot, on PostgreSQL and Oracle. I use Claude Code every day, with context files and decision records in each repo, and ship in small, reviewed pull requests.",
     "I also have a background in access governance, so I build features already thinking about who can access them and how they'll be audited.",
@@ -211,6 +226,17 @@ const PT: Profile = {
   workMode: "Aberto a trabalho remoto",
   metaDescription:
     "Nilo Venturin Neto, engenheiro de software full-stack. Aplicações web em TypeScript com React e Next.js, APIs em Node.js e Java/Spring Boot, sobre PostgreSQL.",
+  keywords: [
+    "engenheiro de software full-stack",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Java Spring Boot",
+    "PostgreSQL",
+    "segregação de funções",
+    "desenvolvedor web freelancer",
+  ],
   summary: [
     "Desenvolvo aplicações web em TypeScript com React, Next.js e Angular, e APIs em Node.js e Java/Spring Boot, sobre PostgreSQL e Oracle. Uso o Claude Code todos os dias, com arquivos de contexto e registros de decisão em cada repositório, e entrego em pull requests pequenos e revisados.",
     "Também venho da governança de acessos, então construo cada funcionalidade já pensando em quem pode acessá-la e em como ela vai ser auditada.",

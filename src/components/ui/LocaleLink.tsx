@@ -2,20 +2,23 @@
 
 import type { AnchorHTMLAttributes, MouseEvent } from "react";
 import { HTML_LANG, Locale, localeCookie } from "../../i18n/locales";
+import { localePath, type Subpage } from "../../site/site";
 
-// Link to one language of the site. Saves the choice so "/" skips the picker
-// next time, and keeps the reader on the section they were on. Without JS it
-// is a plain link and nothing is saved.
+// Link to one language of the site: its home page, or `page` in it. Saves
+// the choice so "/" skips the picker next time, and keeps the reader on the
+// section they were on. Without JS it is a plain link and nothing is saved.
 export const LocaleLink = ({
     locale,
+    page,
     ...props
-}: { locale: Locale } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "hrefLang" | "onClick">) => {
+}: { locale: Locale; page?: Subpage } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "hrefLang" | "onClick">) => {
+    const href = localePath(locale, page);
     const onClick = (event: MouseEvent<HTMLAnchorElement>) => {
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
         event.preventDefault();
         document.cookie = localeCookie(locale);
-        window.location.assign(`/${locale}${window.location.hash}`);
+        window.location.assign(`${href}${window.location.hash}`);
     };
 
-    return <a href={`/${locale}`} hrefLang={HTML_LANG[locale]} onClick={onClick} {...props} />;
+    return <a href={href} hrefLang={HTML_LANG[locale]} onClick={onClick} {...props} />;
 };

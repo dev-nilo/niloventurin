@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
-import { BASE_METADATA, RootHtml } from "../../components/layout/RootHtml";
+import { RootHtml } from "../../components/layout/RootHtml";
 import { PROFILE } from "../../content/profile";
-import { HTML_LANG, LOCALES } from "../../i18n/locales";
+import { HTML_LANG } from "../../i18n/locales";
+import { PICKER_KEYWORDS, pageMetadata } from "../../site/metadata";
 
-export const metadata: Metadata = {
-    title: PROFILE.en.name,
+export const metadata: Metadata = pageMetadata({
+    title: `${PROFILE.en.name} · ${PROFILE.en.role}`,
     description: `${PROFILE.pt.role} · ${PROFILE.en.role}. Escolha o idioma do site · Choose the site's language.`,
-    ...BASE_METADATA,
-    alternates: {
-        languages: Object.fromEntries(LOCALES.map((locale) => [HTML_LANG[locale], `/${locale}`])),
-    },
-};
+    keywords: PICKER_KEYWORDS,
+});
 
 // Root layout for "/", the language picker. It asks in both languages and
 // leads with Portuguese.
