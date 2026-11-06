@@ -1,6 +1,7 @@
-// Freelance services and reference prices, once per language. The
-// downloadable PDF in /public (English only) mirrors these values, so update
-// all three together.
+// Freelance services and reference prices, once per language. Each language
+// has its own currency and its own price table in /public, which mirrors the
+// values here, so update them together: PT is in reais and follows
+// services-pricing-pt.pdf, EN is in US dollars and follows services-pricing.pdf.
 
 import type { Locale } from "../i18n/locales";
 
@@ -21,16 +22,17 @@ export interface MaintenancePlan {
 export interface Services {
   intro: string;
   pdfPath: string;
+  // ISO 4217 code of the prices below, for structured data.
+  currency: "USD" | "BRL";
   items: ServiceItem[];
   maintenance: MaintenancePlan[];
 }
 
-const PDF_PATH = "/services-pricing.pdf";
-
 const EN: Services = {
   intro:
     "I also take freelance web projects, written in custom code rather than website builders. Prices are reference ranges in US dollars; the final quote comes after a short briefing.",
-  pdfPath: PDF_PATH,
+  pdfPath: "/services-pricing.pdf",
+  currency: "USD",
   items: [
     {
       name: "Landing page",
@@ -69,41 +71,67 @@ const EN: Services = {
 
 const PT: Services = {
   intro:
-    "Também faço projetos web como freelancer, em código próprio, sem construtores de sites. Os preços são faixas de referência em dólares americanos; o orçamento final sai depois de um briefing rápido.",
-  pdfPath: PDF_PATH,
+    "Também faço projetos web como freelancer, em código próprio, sem construtores de sites. Os preços são valores de referência em reais, válidos por 30 dias; o orçamento final sai depois de um briefing rápido.",
+  pdfPath: "/services-pricing-pt.pdf",
+  currency: "BRL",
   items: [
     {
       name: "Landing page",
-      description: "Uma página única, focada em conversão, para captar contatos ou lançar um produto.",
-      price: "US$ 600 – 1.200",
-      timeline: "1–2 semanas",
-      includes: ["Layout responsivo sob medida", "Formulário de contato ou botão de WhatsApp", "SEO básico e analytics"],
+      description: "Página única focada em conversão, ideal para captar contatos, divulgar um serviço ou lançar um produto.",
+      price: "R$ 1.500 – 3.000",
+      timeline: "1 a 2 semanas",
+      includes: [
+        "Layout personalizado e 100% responsivo",
+        "Seções de apresentação, serviços, depoimentos e contato",
+        "Botão de WhatsApp e/ou formulário de contato",
+        "SEO básico e otimização de velocidade",
+        "Integração com Google Analytics e Pixel",
+        "Publicação no domínio do cliente",
+      ],
     },
     {
       name: "Site institucional",
-      description: "De 4 a 8 páginas que apresentam o seu negócio e fazem ele ser encontrado no Google.",
-      price: "US$ 1.500 – 3.000",
-      timeline: "4–6 semanas",
-      includes: ["Sua marca aplicada ao layout", "SEO on-page e sitemap", "Integração com mapas e redes sociais"],
+      description: "Site com 4 a 8 páginas para apresentar a empresa com credibilidade e ser encontrado no Google.",
+      price: "R$ 4.000 – 8.000",
+      timeline: "4 a 6 semanas",
+      includes: [
+        "Páginas como Home, Sobre, Serviços e Contato",
+        "Identidade visual aplicada ao layout",
+        "Formulários com envio por e-mail",
+        "SEO on-page em todas as páginas e mapa do site",
+        "Integração com Google Maps e redes sociais",
+      ],
     },
     {
-      name: "Site + CMS",
-      description: "Um site institucional em que você mesmo edita o conteúdo.",
-      price: "US$ 3.000 – 6.000",
-      timeline: "6–10 semanas",
-      includes: ["Painel administrativo com login", "Blog ou seção de notícias", "Perfis de usuário e treinamento"],
+      name: "Site com painel",
+      description: "Site institucional em que o próprio cliente edita os conteúdos, sem depender do desenvolvedor.",
+      price: "R$ 8.000 – 15.000",
+      timeline: "6 a 10 semanas",
+      includes: [
+        "Tudo do site institucional",
+        "Painel com login para editar textos, imagens e serviços",
+        "Blog ou área de novidades",
+        "Usuários com níveis de acesso",
+        "Treinamento de uso do painel",
+      ],
     },
     {
-      name: "Aplicação web sob medida",
-      description: "Contas de usuário, regras de negócio, relatórios e integrações.",
-      price: "Sob consulta",
+      name: "Sistema sob medida",
+      description: "Aplicações web com área logada, cadastros, regras de negócio, relatórios e integrações.",
+      price: "Sob orçamento",
       timeline: "Definido no escopo",
-      includes: ["Levantamento de requisitos e escopo", "Entrega por etapas", "Preço pelas horas estimadas (US$ 35/h)"],
+      includes: [
+        "Levantamento de requisitos e definição de escopo",
+        "Desenvolvimento por etapas, com entregas parciais",
+        "Banco de dados e autenticação",
+        "Integrações com outros sistemas e APIs",
+        "Valor calculado pelas horas estimadas",
+      ],
     },
   ],
   maintenance: [
-    { name: "Básico", price: "US$ 40/mês", includes: "hospedagem, SSL, backups e atualizações de segurança" },
-    { name: "Completo", price: "US$ 120/mês", includes: "o Básico mais até 3 horas de alterações por mês" },
+    { name: "Básico", price: "R$ 150/mês", includes: "hospedagem e certificado SSL, backups periódicos e atualizações de segurança" },
+    { name: "Completo", price: "R$ 400/mês", includes: "tudo do plano Básico, até 3 horas mensais de ajustes, pequenas melhorias e conteúdos" },
   ],
 };
 

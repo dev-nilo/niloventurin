@@ -32,6 +32,14 @@ describe("markdownFor", () => {
     expect(markdownFor("/pt")).toContain(`${SITE_URL}/cv-pt.pdf`);
   });
 
+  it("quotes each language's prices and links its price table", () => {
+    const pt = markdownFor("/pt")!;
+    expect(pt).toContain("R$ 1.500 – 3.000");
+    expect(pt).toContain(`${SITE_URL}/services-pricing-pt.pdf`);
+    expect(pt).not.toContain("US$");
+    expect(markdownFor("/en")).toContain(`${SITE_URL}/services-pricing.pdf`);
+  });
+
   it("includes services with prices and the contact email", () => {
     const markdown = markdownFor("/en")!;
     expect(markdown).toContain("US$ 600 – 1,200");

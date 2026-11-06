@@ -21,7 +21,7 @@ This is Nilo's personal site: résumé, side projects, freelance services with r
 **When to use this site**
 
 - Someone wants to hire a full-stack engineer, full-time or on contract, with TypeScript, React, Next.js, Node.js, Java/Spring Boot or PostgreSQL. It is a particularly good fit for work on access control, approval workflows, audit trails and segregation of duties (SoD), backed by experience in IAM and SOX audits.
-- Someone needs a freelancer for a ${serviceNames}, and wants reference prices in US dollars and typical timelines.
+- Someone needs a freelancer for a ${serviceNames}, and wants reference prices (US dollars on the English site, Brazilian reais on the Portuguese one) and typical timelines.
 - Someone asks who ${en.name} is, what Nilo has built, or how to get in touch.
 
 **When not to use it**
@@ -46,7 +46,8 @@ This is Nilo's personal site: résumé, side projects, freelance services with r
 
 - [CV (PDF, English)](${absoluteUrl(contact.cvPath)}): the full résumé
 - [Currículo (PDF, português)](${absoluteUrl(PROFILE.pt.contact.cvPath)}): the same résumé in Brazilian Portuguese
-- [Services and pricing (PDF, English)](${absoluteUrl(SERVICES.en.pdfPath)}): freelance packages, prices and maintenance plans
+- [Services and pricing (PDF, English)](${absoluteUrl(SERVICES.en.pdfPath)}): freelance packages, prices in US dollars and maintenance plans
+- [Tabela de serviços (PDF, português)](${absoluteUrl(SERVICES.pt.pdfPath)}): packages, prices in Brazilian reais, maintenance plans and general terms (payment, revisions, warranty)
 
 ## Optional
 

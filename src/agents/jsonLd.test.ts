@@ -37,6 +37,18 @@ describe("identityGraph", () => {
     });
   });
 
+  it("prices the Portuguese catalog in reais", () => {
+    const service = byType(identityGraph("pt"), "ProfessionalService");
+    expect(service.currenciesAccepted).toBe("BRL");
+    expect(service.hasOfferCatalog.itemListElement[0].priceSpecification).toEqual({
+      "@type": "PriceSpecification",
+      priceCurrency: "BRL",
+      minPrice: 1500,
+      maxPrice: 3000,
+    });
+    expect(service.hasOfferCatalog.itemListElement[3].priceSpecification).toBeUndefined();
+  });
+
   it("adds a typed page node for subpages", () => {
     expect(byType(identityGraph("pt", "about"), "AboutPage").url).toBe(`${SITE_URL}/pt/about`);
     expect(byType(identityGraph("en", "contact"), "ContactPage").inLanguage).toBe("en");
@@ -52,11 +64,13 @@ describe("parsePriceRange", () => {
   it("reads both number formats", () => {
     expect(parsePriceRange("US$ 1,500 – 3,000")).toEqual([1500, 3000]);
     expect(parsePriceRange("US$ 1.500 – 3.000")).toEqual([1500, 3000]);
+    expect(parsePriceRange("R$ 8.000 – 15.000")).toEqual([8000, 15000]);
   });
 
   it("skips prices that aren't a range", () => {
     expect(parsePriceRange("Custom quote")).toBeNull();
-    expect(parsePriceRange("Sob consulta")).toBeNull();
+    expect(parsePriceRange("Sob orçamento")).toBeNull();
+    expect(parsePriceRange("R$ 150/mês")).toBeNull();
   });
 
   it("parses every range in the services list", () => {

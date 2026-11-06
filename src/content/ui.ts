@@ -49,8 +49,7 @@ const PT: UiText = {
   sourceCode: "código-fonte",
   openProject: "Abrir",
   also: "Também:",
-  // The pricing PDF is only in English.
-  pricingPdf: "Preços em PDF (inglês)",
+  pricingPdf: "Preços em PDF",
   maintenance: "Manutenção opcional:",
   email: "E-mail",
   lightTheme: "Mudar para o tema claro",

@@ -22,10 +22,10 @@ const ADDRESS = {
   addressCountry: "BR",
 };
 
-// "US$ 600 – 1,200" / "US$ 1.500 – 3.000" -> [600, 1200]; null for
-// "Custom quote" and other prices that aren't a range.
+// "US$ 600 – 1,200" / "R$ 1.500 – 3.000" -> [600, 1200] / [1500, 3000]; null
+// for "Custom quote" and other prices that aren't a range.
 export const parsePriceRange = (price: string): [number, number] | null => {
-  const match = price.match(/^US\$\s*([\d.,]+)\s*–\s*([\d.,]+)$/);
+  const match = price.match(/^(?:US\$|R\$)\s*([\d.,]+)\s*–\s*([\d.,]+)$/);
   if (!match) return null;
   const toNumber = (s: string) => Number(s.replace(/[.,]/g, ""));
   return [toNumber(match[1]), toNumber(match[2])];
@@ -67,7 +67,7 @@ const freelanceService = (locale: Locale): Node => {
     email: profile.contact.email,
     address: ADDRESS,
     areaServed: "Worldwide",
-    currenciesAccepted: "USD",
+    currenciesAccepted: services.currency,
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
@@ -87,7 +87,7 @@ const freelanceService = (locale: Locale): Node => {
           ...(range && {
             priceSpecification: {
               "@type": "PriceSpecification",
-              priceCurrency: "USD",
+              priceCurrency: services.currency,
               minPrice: range[0],
               maxPrice: range[1],
             },
