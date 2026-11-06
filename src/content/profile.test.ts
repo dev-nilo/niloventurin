@@ -34,6 +34,25 @@ describe.each(LOCALES)("PROFILE.%s", (locale) => {
   });
 });
 
+describe("PROFILE resume facts", () => {
+  it("gives each language its own CV", () => {
+    expect(PROFILE.en.contact.cvPath).toBe("/cv.pdf");
+    expect(PROFILE.pt.contact.cvPath).toBe("/cv-pt.pdf");
+  });
+
+  it.each(LOCALES)("%s matches the current resume", (locale) => {
+    const profile = PROFILE[locale];
+    const cbmes = profile.experience.find((job) => job.company.includes("CBMES"))!;
+    const pvt = profile.experience.find((job) => job.company === "PVT Software")!;
+    expect(profile.stats[0].value).toBe("6+");
+    expect(cbmes.highlights.join(" ")).toContain("SIAT");
+    expect(profile.summary.join(" ")).toContain("SIAT");
+    expect(profile.projects.map((p) => p.name)).toEqual(["Rotina", "Cat-modoro", "Squadra"]);
+    // Removed from the resume on purpose; must not come back with a copy-paste.
+    expect(JSON.stringify(pvt)).not.toContain("SOD Analyzer");
+  });
+});
+
 describe("PROFILE translations", () => {
   // A resume update has to land in both languages.
   it("list the same jobs, projects and skills in every language", () => {

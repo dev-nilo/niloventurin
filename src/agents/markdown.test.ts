@@ -27,6 +27,11 @@ describe("markdownFor", () => {
     expect(markdownFor("/pt/privacy")).toContain("LGPD");
   });
 
+  it("links each language to its own CV", () => {
+    expect(markdownFor("/en")).toContain(`${SITE_URL}/cv.pdf`);
+    expect(markdownFor("/pt")).toContain(`${SITE_URL}/cv-pt.pdf`);
+  });
+
   it("includes services with prices and the contact email", () => {
     const markdown = markdownFor("/en")!;
     expect(markdown).toContain("US$ 600 – 1,200");

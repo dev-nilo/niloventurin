@@ -45,6 +45,7 @@ This is Nilo's personal site: résumé, side projects, freelance services with r
 ## Downloads
 
 - [CV (PDF, English)](${absoluteUrl(contact.cvPath)}): the full résumé
+- [Currículo (PDF, português)](${absoluteUrl(PROFILE.pt.contact.cvPath)}): the same résumé in Brazilian Portuguese
 - [Services and pricing (PDF, English)](${absoluteUrl(SERVICES.en.pdfPath)}): freelance packages, prices and maintenance plans
 
 ## Optional

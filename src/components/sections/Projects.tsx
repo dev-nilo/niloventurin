@@ -24,11 +24,11 @@ export const Projects = ({ locale }: { locale: Locale }) => {
         </Button>
       }
     >
-      <div className="grid border-t border-l border-line md:grid-cols-2">
+      <div className="grid border-t border-l border-line md:grid-cols-3">
         {profile.projects.map((project, index) => (
           <article
             key={project.name}
-            style={stagger(index % 2)}
+            style={stagger(index % 3)}
             className="reveal flex flex-col border-r border-b border-line p-6 transition-colors hover:bg-ink/[0.03] md:p-8"
           >
             <div className="mb-10 flex items-start justify-between">

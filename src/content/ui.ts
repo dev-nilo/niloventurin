@@ -43,13 +43,13 @@ const EN: UiText = {
 
 const PT: UiText = {
   nav: { about: "Sobre", experience: "Experiência", projects: "Projetos", services: "Serviços", contact: "Contato" },
-  // Both PDFs are only in English.
-  downloadCv: "Baixar CV (inglês)",
+  downloadCv: "Baixar CV",
   at: "em",
   projectsIntro: "Projetos pessoais, todos no ar.",
   sourceCode: "código-fonte",
   openProject: "Abrir",
   also: "Também:",
+  // The pricing PDF is only in English.
   pricingPdf: "Preços em PDF (inglês)",
   maintenance: "Manutenção opcional:",
   email: "E-mail",

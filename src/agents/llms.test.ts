@@ -44,5 +44,7 @@ describe("llmsTxt", () => {
     expect(text).toContain(`(${SITE_URL}/en)`);
     expect(text).toContain(`(${SITE_URL}/en/contact)`);
     expect(text).toContain(`(${SITE_URL}/sitemap.xml)`);
+    expect(text).toContain(`(${SITE_URL}/cv.pdf)`);
+    expect(text).toContain(`(${SITE_URL}/cv-pt.pdf)`);
   });
 });

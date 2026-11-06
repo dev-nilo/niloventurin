@@ -67,8 +67,6 @@ const CONTACT = {
   email: "venturin.nilo@gmail.com",
   github: "https://github.com/dev-nilo",
   linkedin: "https://www.linkedin.com/in/niloventurin/",
-  // The CV is only in English for now.
-  cvPath: "/cv.pdf",
 };
 
 const LINKS = {
@@ -81,7 +79,7 @@ const LINKS = {
 const STACKS = {
   squadra: ["Next.js 16", "React 19", "TypeScript", "Supabase", "Vitest"],
   catModoro: ["Next.js", "React", "TypeScript", "Vitest"],
-  rotina: ["JavaScript", "PWA", "Web Push", "Cloudflare Workers"],
+  rotina: ["JavaScript", "PWA", "Service Worker", "Claude API", "Web Push", "Cloudflare Workers"],
   pilares: ["Next.js", "TypeScript", "PWA"],
 };
 
@@ -105,22 +103,24 @@ const EN: Profile = {
     "freelance web developer",
   ],
   summary: [
-    "I build web apps in TypeScript with React, Next.js and Angular, and APIs in Node.js and Java/Spring Boot, on PostgreSQL and Oracle. I use Claude Code every day, with context files and decision records in each repo, and ship in small, reviewed pull requests.",
-    "I also have a background in access governance, so I build features already thinking about who can access them and how they'll be audited.",
+    "I build systems for critical, regulated operations: web apps in TypeScript with React, Next.js and Angular, and APIs in Node.js and Java/Spring Boot, on PostgreSQL and Oracle. I lead development of ISEO, the Espírito Santo Fire Department's shift system, and coordinate SIAT, its fire-safety licensing platform.",
+    "Access-governance and SOX work gave me a security and audit mindset, so I build features already thinking about who can access them and how they'll be audited. I use AI every day in my development workflow: Claude Code and ChatGPT, with context files and decision records in each repo, and small, reviewed pull requests.",
   ],
   stats: [
-    { value: "5+", label: "years in software development" },
+    { value: "6+", label: "years in tech" },
     { value: "B2+", label: "English level" },
   ],
   skillGroups: [
-    { title: "Frontend", items: ["React", "Next.js", "TypeScript", "Angular", "Tailwind CSS"] },
-    { title: "Backend", items: ["Java/Spring Boot", "Node.js", "REST APIs"] },
-    { title: "Data", items: ["PostgreSQL", "Oracle", "Supabase", "Drizzle ORM", "Flyway"] },
-    { title: "DevOps", items: ["Docker", "GitHub Actions", "Vercel", "Vitest", "JUnit"] },
-    { title: "Security", items: ["OAuth2/OIDC", "Keycloak", "Row-level security", "RBAC", "SOX"] },
+    { title: "Languages", items: ["TypeScript", "JavaScript", "Java", "SQL", "PL/SQL", "PL/pgSQL", "HTML/CSS", "ADVPL", "PHP", "Go (learning)"] },
+    { title: "Frontend", items: ["React", "Next.js", "Angular", "PO UI", "Tailwind CSS", "shadcn/ui", "Radix UI"] },
+    { title: "Backend", items: ["Node.js", "REST APIs", "Supabase Edge Functions", "Spring Boot", "OAuth2/OIDC", "Keycloak"] },
+    { title: "Data", items: ["PostgreSQL", "Row-level security", "Oracle", "Supabase", "Drizzle ORM", "Flyway"] },
+    { title: "Testing & CI/CD", items: ["Vitest", "Jest", "JUnit", "Code review", "GitHub Actions", "Docker", "Vercel"] },
+    { title: "AI", items: ["Claude Code", "ChatGPT", "Context files", "ADRs"] },
+    { title: "Domain", items: ["TOTVS RM", "TOTVS Protheus", "IAM", "RBAC", "SoD", "SOX", "ITGC", "LGPD"] },
   ],
   education:
-    "Technologist Degree in Systems Analysis and Development, Multivix (2024) · curso.dev certification (2025)",
+    "Technologist Degree in Systems Analysis and Development, Multivix (2022 – 2024) · curso.dev certification, full-stack Node.js/Next.js (2025)",
   languages: "Portuguese (native) · English (B2+, near C1)",
   experience: [
     {
@@ -129,13 +129,11 @@ const EN: Profile = {
       period: "Jun 2024 – Present",
       location: "Remote",
       highlights: [
-        "Designed and built SOD Analyzer on my own: a segregation-of-duties app for TOTVS RM. Analysts run SoD analyses on permission profiles and send each one to a separate approver portal, with an audit log and PDF/XLSX exports.",
-        "Built SOD Analyzer's authentication, row-level security, approval workflow and exports on Supabase, with a Next.js, React 19, TypeScript and shadcn/ui front end.",
         "Proposed Argos, a SoD platform that applies approved access changes to TOTVS RM with a full SOX audit trail, and built it with a small team up to a client proof of concept.",
-        "For Argos, built the PostgreSQL data layer (migrations, PL/pgSQL, row-level security), the Node.js/TypeScript service and the Supabase Edge Functions behind the SoD engine. Every write to the ERP is read back to confirm it; anything we can't confirm goes to manual review instead of being retried.",
+        "Built Argos's PostgreSQL data layer (migrations, PL/pgSQL, row-level security), Node.js/TypeScript service and Supabase Edge Functions. Every ERP write is read back; unconfirmed changes go to manual review instead of being retried.",
+        "Day to day, I build React/Next.js front ends and Node.js APIs on PostgreSQL and Oracle for ERP clients, plus TOTVS RM customizations and SQL/PL-SQL jobs that cut manual work by more than 6 hours a day.",
       ],
       secondary: [
-        "TOTVS RM customizations and SQL/PL-SQL programs on Oracle. The reports, integrations and scheduled jobs I built cut manual work by more than 6 hours a day.",
         "IT risk matrices, ITGC testing and remediation plans for clients' annual SOX certification.",
       ],
     },
@@ -145,9 +143,10 @@ const EN: Profile = {
       period: "Mar 2026 – Present",
       location: "Vitória, ES, Brazil",
       highlights: [
-        "Lead developer of ISEO (Java 25/Spring Boot, Angular 20), the system that runs the corporation's paid supplementary shifts end to end. It models the organization itself: units and duty posts, team compositions by role, ranks and seniority synced from the personnel registry, and each firefighter's qualifications and eligibility.",
-        "Monthly planning in one place: fixed and one-off shifts, batch call-ups, voluntary sign-ups with a fairness-ordered draw, compulsory assignment, swaps, monthly limits and notifications. Rule overrides require explicit permissions and are audit-logged.",
-        "Co-develop the central authentication BFF for CBMES apps: OAuth2/OIDC with Keycloak, tokens kept server-side, HttpOnly sessions shared across apps through Redis.",
+        "Lead developer of ISEO (Java 25/Spring Boot, Angular 20), the system that runs the corporation's paid extra shifts end to end. It models the organization itself: units and duty posts, teams by role, ranks and seniority from the personnel registry, and each firefighter's qualifications and eligibility.",
+        "Monthly planning in one place: fixed and one-off shifts, batch call-ups, voluntary sign-ups with a fairness-ordered draw, compulsory assignment, swaps and notifications. Rule overrides need explicit permission and are audit-logged.",
+        "Coordinate SIAT, the state platform for fire and panic safety processes, licensing and inspections. I run a weekly session with a small team to design the delivery pipeline and review code.",
+        "Co-develop the central authentication BFF for CBMES apps: OAuth2/OIDC with Keycloak, sessions shared through Redis.",
       ],
       secondary: [
         "26 Flyway migrations on PostgreSQL with an Oracle mirror, JUnit and Angular tests, architecture decision records, and Docker deploys through GitHub Actions.",
@@ -171,34 +170,35 @@ const EN: Profile = {
       period: "Dec 2021 – May 2023",
       location: "Remote",
       highlights: [
-        "Designed role-based access models and ran segregation-of-duties reviews covering more than 10,000 users, bringing critical conflicts down to zero.",
-        "Automated access analysis in SQL and prepared evidence for SOX audits.",
+        "Designed and implemented RBAC models for TOTVS RM, Active Directory, Microsoft Admin and other client systems.",
+        "Ran segregation-of-duties reviews across more than 10,000 users, bringing critical conflicts to zero, and automated the analysis with SQL.",
+        "Supported SOX through access reviews and ITGC testing, and adapted access governance to LGPD/GDPR.",
       ],
     },
     {
       company: "Freelance",
       role: "Front-End Developer",
       period: "Mar 2020 – Nov 2021",
-      location: "Self-employed",
+      location: "Remote",
       highlights: ["Built front ends in React for freelance clients."],
     },
     {
       company: "Netsimples",
       role: "Web Designer",
       period: "Jan 2019 – Feb 2020",
-      location: "Vila Velha, Brazil",
+      location: "Vila Velha, ES, Brazil",
       highlights: [
-        "Designed and built client websites from layout to launch: front ends in React, JavaScript and CSS, and WordPress themes and features in PHP.",
+        "Built client websites from requirements to launch: WordPress/PHP themes and React, JavaScript and CSS front ends.",
       ],
     },
   ],
   projects: [
     {
-      name: "Squadra",
+      name: "Rotina",
       description:
-        "Draws balanced teams from player ratings. Each account only sees its own data, enforced by row-level security in PostgreSQL.",
-      stack: STACKS.squadra,
-      ...LINKS.squadra,
+        "Offline PWA that shows what to do now from a weekly routine. An assistant on the Claude API turns short Portuguese requests into schema-validated JSON edits the user approves; reminders through Web Push on a Cloudflare Worker.",
+      stack: STACKS.rotina,
+      ...LINKS.rotina,
     },
     {
       name: "Cat-modoro",
@@ -206,13 +206,20 @@ const EN: Profile = {
       stack: STACKS.catModoro,
       ...LINKS.catModoro,
     },
+    {
+      name: "Squadra",
+      description:
+        "Multi-tenant app that draws balanced teams. Each account's data is isolated with Supabase Auth and row-level security.",
+      stack: STACKS.squadra,
+      ...LINKS.squadra,
+    },
   ],
   otherProjects: [
-    { name: "Rotina", description: "daily routine app (PWA) with push reminders", stack: STACKS.rotina, ...LINKS.rotina },
     { name: "Pilares", description: "offline journal (PWA)", stack: STACKS.pilares, ...LINKS.pilares },
   ],
   contact: {
     ...CONTACT,
+    cvPath: "/cv.pdf",
     pitch:
       "If you're hiring for full-stack work, email is the fastest way to reach me. I'm also on LinkedIn.",
   },
@@ -238,23 +245,25 @@ const PT: Profile = {
     "desenvolvedor web freelancer",
   ],
   summary: [
-    "Desenvolvo aplicações web em TypeScript com React, Next.js e Angular, e APIs em Node.js e Java/Spring Boot, sobre PostgreSQL e Oracle. Uso o Claude Code todos os dias, com arquivos de contexto e registros de decisão em cada repositório, e entrego em pull requests pequenos e revisados.",
-    "Também venho da governança de acessos, então construo cada funcionalidade já pensando em quem pode acessá-la e em como ela vai ser auditada.",
+    "Construo sistemas para operações críticas e reguladas: aplicações web em TypeScript com React, Next.js e Angular, e APIs em Node.js e Java/Spring Boot, sobre PostgreSQL e Oracle. Lidero o desenvolvimento do ISEO, o sistema de escalas do Corpo de Bombeiros do Espírito Santo, e coordeno o SIAT, a plataforma de licenciamento de segurança contra incêndio.",
+    "Governança de acessos e SOX me deram mentalidade de segurança e auditoria, então construo cada funcionalidade já pensando em quem pode acessá-la e em como ela vai ser auditada. Uso IA todo dia no desenvolvimento: Claude Code e ChatGPT, com arquivos de contexto e registros de decisão em cada repositório, e pull requests pequenos e revisados.",
   ],
   stats: [
-    { value: "5+", label: "anos desenvolvendo software" },
+    { value: "6+", label: "anos em tecnologia" },
     { value: "B2+", label: "nível de inglês" },
   ],
   skillGroups: [
-    { title: "Frontend", items: ["React", "Next.js", "TypeScript", "Angular", "Tailwind CSS"] },
-    { title: "Backend", items: ["Java/Spring Boot", "Node.js", "APIs REST"] },
-    { title: "Dados", items: ["PostgreSQL", "Oracle", "Supabase", "Drizzle ORM", "Flyway"] },
-    { title: "DevOps", items: ["Docker", "GitHub Actions", "Vercel", "Vitest", "JUnit"] },
-    { title: "Segurança", items: ["OAuth2/OIDC", "Keycloak", "Row-level security", "RBAC", "SOX"] },
+    { title: "Linguagens", items: ["TypeScript", "JavaScript", "Java", "SQL", "PL/SQL", "PL/pgSQL", "HTML/CSS", "ADVPL", "PHP", "Go (estudando)"] },
+    { title: "Frontend", items: ["React", "Next.js", "Angular", "PO UI", "Tailwind CSS", "shadcn/ui", "Radix UI"] },
+    { title: "Backend", items: ["Node.js", "APIs REST", "Supabase Edge Functions", "Spring Boot", "OAuth2/OIDC", "Keycloak"] },
+    { title: "Dados", items: ["PostgreSQL", "Row-level security", "Oracle", "Supabase", "Drizzle ORM", "Flyway"] },
+    { title: "Testes e CI/CD", items: ["Vitest", "Jest", "JUnit", "Code review", "GitHub Actions", "Docker", "Vercel"] },
+    { title: "IA", items: ["Claude Code", "ChatGPT", "Arquivos de contexto", "ADRs"] },
+    { title: "Domínio", items: ["TOTVS RM", "TOTVS Protheus", "IAM", "RBAC", "SoD", "SOX", "ITGC", "LGPD"] },
   ],
   education:
-    "Tecnólogo em Análise e Desenvolvimento de Sistemas, Multivix (2024) · certificação curso.dev (2025)",
-  languages: "Português (nativo) · Inglês (B2+, perto do C1)",
+    "Tecnólogo em Análise e Desenvolvimento de Sistemas, Multivix (2022 – 2024) · certificação curso.dev, full stack Node.js/Next.js (2025)",
+  languages: "Português (nativo) · Inglês (B2+, próximo de C1)",
   experience: [
     {
       company: "PVT Software",
@@ -262,13 +271,11 @@ const PT: Profile = {
       period: "jun 2024 – atual",
       location: "Remoto",
       highlights: [
-        "Projetei e desenvolvi sozinho o SOD Analyzer, um app de segregação de funções para o TOTVS RM. Analistas rodam análises de SoD sobre perfis de permissão e enviam cada uma para um portal de aprovação separado, com log de auditoria e exportação em PDF/XLSX.",
-        "Construí a autenticação, o row-level security, o fluxo de aprovação e as exportações do SOD Analyzer no Supabase, com front-end em Next.js, React 19, TypeScript e shadcn/ui.",
-        "Propus o Argos, uma plataforma de SoD que aplica no TOTVS RM as mudanças de acesso aprovadas, com trilha de auditoria SOX completa, e o construí com um time pequeno até uma prova de conceito com cliente.",
-        "No Argos, construí a camada de dados em PostgreSQL (migrations, PL/pgSQL, row-level security), o serviço em Node.js/TypeScript e as Supabase Edge Functions por trás do motor de SoD. Toda escrita no ERP é lida de volta para confirmar; o que não dá para confirmar vai para revisão manual em vez de ser repetido.",
+        "Propus o Argos, plataforma de SoD que aplica no TOTVS RM as mudanças de acesso aprovadas, com trilha de auditoria SOX, e o construí com uma equipe pequena até a prova de conceito com cliente.",
+        "Construí a camada de dados do Argos em PostgreSQL (migrations, PL/pgSQL, row-level security), o serviço em Node.js/TypeScript e as Supabase Edge Functions. Toda escrita no ERP é lida de volta para confirmar; o que não dá para confirmar vai para revisão manual em vez de ser repetido.",
+        "No dia a dia, front-ends em React/Next.js e APIs Node.js sobre PostgreSQL e Oracle para clientes de ERP, além de customizações do TOTVS RM e jobs SQL/PL-SQL que poupam mais de 6 horas de trabalho manual por dia.",
       ],
       secondary: [
-        "Customizações do TOTVS RM e programas SQL/PL-SQL em Oracle. Os relatórios, integrações e jobs agendados que desenvolvi cortaram mais de 6 horas de trabalho manual por dia.",
         "Matrizes de risco de TI, testes de ITGC e planos de remediação para a certificação SOX anual dos clientes.",
       ],
     },
@@ -278,9 +285,10 @@ const PT: Profile = {
       period: "mar 2026 – atual",
       location: "Vitória, ES, Brasil",
       highlights: [
-        "Desenvolvedor líder do ISEO (Java 25/Spring Boot, Angular 20), o sistema que gerencia de ponta a ponta as escalas extras remuneradas da corporação. Ele modela a própria organização: unidades e postos de serviço, composição das equipes por função, postos, graduações e antiguidade sincronizados com o cadastro de pessoal, e as qualificações e a elegibilidade de cada bombeiro.",
-        "Planejamento mensal num só lugar: escalas fixas e avulsas, convocações em lote, inscrições voluntárias com sorteio ordenado por critério de equidade, escala compulsória, permutas, limites mensais e notificações. Exceções às regras exigem permissão explícita e ficam registradas em auditoria.",
-        "Codesenvolvo o BFF central de autenticação dos sistemas do CBMES: OAuth2/OIDC com Keycloak, tokens guardados no servidor e sessões HttpOnly compartilhadas entre os sistemas via Redis.",
+        "Desenvolvedor principal do ISEO (Java 25/Spring Boot, Angular 20), o sistema que opera de ponta a ponta as escalas extras remuneradas da corporação. Ele modela a estrutura da corporação: unidades e postos, equipes por função, patente e antiguidade do cadastro de pessoal, qualificações e elegibilidade de cada militar.",
+        "Planejamento mensal em um só lugar: escalas fixas e avulsas, convocações em lote, candidaturas voluntárias com sorteio por ordem de prioridade, escalação compulsória, trocas e notificações. Exceções às regras exigem permissão e ficam em auditoria.",
+        "Coordeno o SIAT, a plataforma estadual de processos de segurança contra incêndio e pânico, licenciamento e vistorias. Conduzo a weekly da equipe para desenhar a pipeline de entrega e revisar código.",
+        "Codesenvolvo o BFF central de autenticação dos sistemas do CBMES: OAuth2/OIDC com Keycloak e sessões compartilhadas via Redis.",
       ],
       secondary: [
         "26 migrations Flyway em PostgreSQL com espelho em Oracle, testes em JUnit e Angular, registros de decisão de arquitetura e deploys em Docker pelo GitHub Actions.",
@@ -304,34 +312,35 @@ const PT: Profile = {
       period: "dez 2021 – mai 2023",
       location: "Remoto",
       highlights: [
-        "Desenhei modelos de acesso baseados em papéis e conduzi revisões de segregação de funções com mais de 10.000 usuários, zerando os conflitos críticos.",
-        "Automatizei análises de acesso em SQL e preparei evidências para auditorias SOX.",
+        "Implementei modelos de acesso baseado em função (RBAC) para TOTVS RM, Active Directory e outros sistemas.",
+        "Conduzi revisões de segregação de funções para mais de 10.000 usuários, zerando os conflitos críticos, e automatizei a análise em SQL.",
+        "Apoiei a conformidade SOX com revisões de acesso e testes de ITGC, e a adequação à LGPD/GDPR.",
       ],
     },
     {
       company: "Freelance",
       role: "Desenvolvedor Front-End",
       period: "mar 2020 – nov 2021",
-      location: "Autônomo",
+      location: "Remoto",
       highlights: ["Desenvolvi front-ends em React para clientes como freelancer."],
     },
     {
       company: "Netsimples",
       role: "Web Designer",
       period: "jan 2019 – fev 2020",
-      location: "Vila Velha, Brasil",
+      location: "Vila Velha, ES",
       highlights: [
-        "Criei e desenvolvi sites de clientes do layout à publicação: front-ends em React, JavaScript e CSS, e temas e funcionalidades de WordPress em PHP.",
+        "Construí sites de clientes do levantamento de requisitos ao lançamento: temas WordPress/PHP e front-ends em React, JavaScript e CSS.",
       ],
     },
   ],
   projects: [
     {
-      name: "Squadra",
+      name: "Rotina",
       description:
-        "Sorteia times equilibrados a partir das notas dos jogadores. Cada conta só vê os próprios dados, garantido por row-level security no PostgreSQL.",
-      stack: STACKS.squadra,
-      ...LINKS.squadra,
+        "PWA offline que mostra o que fazer agora na rotina da semana. Um assistente com a API do Claude entende pedidos em português (\"amanhã 8h vou jogar bola\") e devolve ajustes em JSON com schema para o usuário aprovar; avisos por Web Push via Cloudflare Worker.",
+      stack: STACKS.rotina,
+      ...LINKS.rotina,
     },
     {
       name: "Cat-modoro",
@@ -339,13 +348,20 @@ const PT: Profile = {
       stack: STACKS.catModoro,
       ...LINKS.catModoro,
     },
+    {
+      name: "Squadra",
+      description:
+        "App multi-tenant de sorteio de times equilibrados. Os dados de cada conta ficam isolados com Supabase Auth e row-level security.",
+      stack: STACKS.squadra,
+      ...LINKS.squadra,
+    },
   ],
   otherProjects: [
-    { name: "Rotina", description: "app de rotina diária (PWA) com lembretes por push", stack: STACKS.rotina, ...LINKS.rotina },
     { name: "Pilares", description: "diário offline (PWA)", stack: STACKS.pilares, ...LINKS.pilares },
   ],
   contact: {
     ...CONTACT,
+    cvPath: "/cv-pt.pdf",
     pitch:
       "Se você está contratando para uma vaga full-stack, o e-mail é o jeito mais rápido de falar comigo. Também estou no LinkedIn.",
   },
