@@ -109,6 +109,7 @@ const EN: Profile = {
   ],
   stats: [
     { value: "6+", label: "years in tech" },
+    { value: "3+", label: "years as a developer" },
     { value: "B2", label: "English level" },
   ],
   skillGroups: [
@@ -251,6 +252,7 @@ const PT: Profile = {
   ],
   stats: [
     { value: "6+", label: "anos em tecnologia" },
+    { value: "3+", label: "anos como desenvolvedor" },
     { value: "B2", label: "nível de inglês" },
   ],
   skillGroups: [
