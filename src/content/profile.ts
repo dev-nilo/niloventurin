@@ -104,24 +104,25 @@ const EN: Profile = {
   ],
   summary: [
     "I build systems for critical, regulated operations: web apps in TypeScript with React, Next.js and Angular, and APIs in Node.js and Java/Spring Boot, on PostgreSQL and Oracle. I lead development of ISEO, the Espírito Santo Fire Department's shift system, and coordinate SIAT, its fire-safety licensing platform.",
-    "Access-governance and SOX work gave me a security and audit mindset, so I build features already thinking about who can access them and how they'll be audited. I use AI every day in my development workflow: Claude Code and ChatGPT, with context files and decision records in each repo, and small, reviewed pull requests.",
+    "Access-governance and SOX work gave me a security and audit mindset, so I build features already thinking about who can access them and how they'll be audited. I use AI every day in my development workflow: Claude Code and Gemini, with context files and decision records in each repo, and small, reviewed pull requests. I'm also going deeper into how AI works: LLMs, RAG and how to build products on top of them.",
+    "Outside of code, training is a big part of my life: gym, running, cycling and a weekly soccer game, with my progress tracked on a watch and apps. That habit of steady, measured progress is also how I approach learning and work.",
   ],
   stats: [
     { value: "6+", label: "years in tech" },
-    { value: "B2+", label: "English level" },
+    { value: "B2", label: "English level" },
   ],
   skillGroups: [
-    { title: "Languages", items: ["TypeScript", "JavaScript", "Java", "SQL", "PL/SQL", "PL/pgSQL", "HTML/CSS", "ADVPL", "PHP", "Go (learning)"] },
+    { title: "Languages", items: ["TypeScript", "JavaScript", "Java", "SQL", "PL/SQL", "PL/pgSQL", "HTML/CSS", "ADVPL"] },
     { title: "Frontend", items: ["React", "Next.js", "Angular", "PO UI", "Tailwind CSS", "shadcn/ui", "Radix UI"] },
     { title: "Backend", items: ["Node.js", "REST APIs", "Supabase Edge Functions", "Spring Boot", "OAuth2/OIDC", "Keycloak"] },
     { title: "Data", items: ["PostgreSQL", "Row-level security", "Oracle", "Supabase", "Drizzle ORM", "Flyway"] },
     { title: "Testing & CI/CD", items: ["Vitest", "Jest", "JUnit", "Code review", "GitHub Actions", "Docker", "Vercel"] },
-    { title: "AI", items: ["Claude Code", "ChatGPT", "Context files", "ADRs"] },
+    { title: "AI", items: ["Claude Code", "Gemini", "Context files", "ADRs", "LLMs and RAG (studying)"] },
     { title: "Domain", items: ["TOTVS RM", "TOTVS Protheus", "IAM", "RBAC", "SoD", "SOX", "ITGC", "LGPD"] },
   ],
   education:
     "Technologist Degree in Systems Analysis and Development, Multivix (2022 – 2024) · curso.dev certification, full-stack Node.js/Next.js (2025)",
-  languages: "Portuguese (native) · English (B2+, near C1)",
+  languages: "Portuguese (native) · English (B2)",
   experience: [
     {
       company: "PVT Software",
@@ -130,7 +131,6 @@ const EN: Profile = {
       location: "Remote",
       highlights: [
         "Proposed Argos, a SoD platform that applies approved access changes to TOTVS RM with a full SOX audit trail, and built it with a small team up to a client proof of concept.",
-        "Built Argos's PostgreSQL data layer (migrations, PL/pgSQL, row-level security), Node.js/TypeScript service and Supabase Edge Functions. Every ERP write is read back; unconfirmed changes go to manual review instead of being retried.",
         "Day to day, I build React/Next.js front ends and Node.js APIs on PostgreSQL and Oracle for ERP clients, plus TOTVS RM customizations and SQL/PL-SQL jobs that cut manual work by more than 6 hours a day.",
       ],
       secondary: [
@@ -246,24 +246,25 @@ const PT: Profile = {
   ],
   summary: [
     "Construo sistemas para operações críticas e reguladas: aplicações web em TypeScript com React, Next.js e Angular, e APIs em Node.js e Java/Spring Boot, sobre PostgreSQL e Oracle. Lidero o desenvolvimento do ISEO, o sistema de escalas do Corpo de Bombeiros do Espírito Santo, e coordeno o SIAT, a plataforma de licenciamento de segurança contra incêndio.",
-    "Governança de acessos e SOX me deram mentalidade de segurança e auditoria, então construo cada funcionalidade já pensando em quem pode acessá-la e em como ela vai ser auditada. Uso IA todo dia no desenvolvimento: Claude Code e ChatGPT, com arquivos de contexto e registros de decisão em cada repositório, e pull requests pequenos e revisados.",
+    "Governança de acessos e SOX me deram mentalidade de segurança e auditoria, então construo cada funcionalidade já pensando em quem pode acessá-la e em como ela vai ser auditada. Uso IA todo dia no desenvolvimento: Claude Code e Gemini, com arquivos de contexto e registros de decisão em cada repositório, e pull requests pequenos e revisados. Também estou me aprofundando em como a IA funciona: LLMs, RAG e como construir produtos em cima deles.",
+    "Fora do código, o treino é parte importante da minha vida: academia, corrida, bike e o futebol semanal, acompanhando minha evolução com relógio e apps. Esse hábito de progresso constante e medido é o mesmo que levo para o estudo e o trabalho.",
   ],
   stats: [
     { value: "6+", label: "anos em tecnologia" },
-    { value: "B2+", label: "nível de inglês" },
+    { value: "B2", label: "nível de inglês" },
   ],
   skillGroups: [
-    { title: "Linguagens", items: ["TypeScript", "JavaScript", "Java", "SQL", "PL/SQL", "PL/pgSQL", "HTML/CSS", "ADVPL", "PHP", "Go (estudando)"] },
+    { title: "Linguagens", items: ["TypeScript", "JavaScript", "Java", "SQL", "PL/SQL", "PL/pgSQL", "HTML/CSS", "ADVPL"] },
     { title: "Frontend", items: ["React", "Next.js", "Angular", "PO UI", "Tailwind CSS", "shadcn/ui", "Radix UI"] },
     { title: "Backend", items: ["Node.js", "APIs REST", "Supabase Edge Functions", "Spring Boot", "OAuth2/OIDC", "Keycloak"] },
     { title: "Dados", items: ["PostgreSQL", "Row-level security", "Oracle", "Supabase", "Drizzle ORM", "Flyway"] },
     { title: "Testes e CI/CD", items: ["Vitest", "Jest", "JUnit", "Code review", "GitHub Actions", "Docker", "Vercel"] },
-    { title: "IA", items: ["Claude Code", "ChatGPT", "Arquivos de contexto", "ADRs"] },
+    { title: "IA", items: ["Claude Code", "Gemini", "Arquivos de contexto", "ADRs", "LLMs e RAG (estudando)"] },
     { title: "Domínio", items: ["TOTVS RM", "TOTVS Protheus", "IAM", "RBAC", "SoD", "SOX", "ITGC", "LGPD"] },
   ],
   education:
     "Tecnólogo em Análise e Desenvolvimento de Sistemas, Multivix (2022 – 2024) · certificação curso.dev, full stack Node.js/Next.js (2025)",
-  languages: "Português (nativo) · Inglês (B2+, próximo de C1)",
+  languages: "Português (nativo) · Inglês (B2)",
   experience: [
     {
       company: "PVT Software",
@@ -272,7 +273,6 @@ const PT: Profile = {
       location: "Remoto",
       highlights: [
         "Propus o Argos, plataforma de SoD que aplica no TOTVS RM as mudanças de acesso aprovadas, com trilha de auditoria SOX, e o construí com uma equipe pequena até a prova de conceito com cliente.",
-        "Construí a camada de dados do Argos em PostgreSQL (migrations, PL/pgSQL, row-level security), o serviço em Node.js/TypeScript e as Supabase Edge Functions. Toda escrita no ERP é lida de volta para confirmar; o que não dá para confirmar vai para revisão manual em vez de ser repetido.",
         "No dia a dia, front-ends em React/Next.js e APIs Node.js sobre PostgreSQL e Oracle para clientes de ERP, além de customizações do TOTVS RM e jobs SQL/PL-SQL que poupam mais de 6 horas de trabalho manual por dia.",
       ],
       secondary: [

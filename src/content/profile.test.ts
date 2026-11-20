@@ -50,6 +50,8 @@ describe("PROFILE resume facts", () => {
     expect(profile.projects.map((p) => p.name)).toEqual(["Rotina", "Cat-modoro", "Squadra"]);
     // Removed from the resume on purpose; must not come back with a copy-paste.
     expect(JSON.stringify(pvt)).not.toContain("SOD Analyzer");
+    // Corrected on purpose (not done / not true); must not come back either.
+    expect(JSON.stringify(profile)).not.toMatch(/B2\+|ChatGPT|"PHP"|"Go \(|Argos's PostgreSQL|camada de dados do Argos/);
   });
 });
 
