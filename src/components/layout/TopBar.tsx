@@ -4,9 +4,11 @@ import { useState } from "react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { Github, Linkedin } from "../ui/BrandIcons";
 import { AppLink } from "../ui/AppLink";
+import { LocaleLink } from "../ui/LocaleLink";
 import { useTheme } from "../../context/ThemeContext";
 import { useActiveSection } from "../../navigation/useActiveSection";
-import { PROFILE } from "../../content/profile";
+import type { UiText } from "../../content/ui";
+import type { Locale } from "../../i18n/locales";
 import { GLASS } from "./Section";
 
 interface NavItem {
@@ -16,7 +18,18 @@ interface NavItem {
 
 const CELL = "flex w-12 items-center justify-center border-l border-line text-muted hover:bg-ink hover:text-bg";
 
-export const TopBar = ({ items, environment }: { items: NavItem[]; environment: string | null }) => {
+interface TopBarProps {
+  items: NavItem[];
+  environment: string | null;
+  name: string;
+  github: string;
+  linkedin: string;
+  ui: UiText;
+  // The language the switch leads to.
+  otherLocale: Locale;
+}
+
+export const TopBar = ({ items, environment, name, github, linkedin, ui, otherLocale }: TopBarProps) => {
   const [open, setOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   // "home" is tracked too, so nothing is highlighted while the hero is on screen.
@@ -32,7 +45,7 @@ export const TopBar = ({ items, environment }: { items: NavItem[]; environment: 
             onClick={() => setOpen(false)}
             className="flex items-center border-r border-line px-4 font-semibold tracking-tight whitespace-nowrap hover:opacity-70 sm:px-5"
           >
-            {PROFILE.name}
+            {name}
           </a>
           <nav className="hidden items-stretch px-1.5 lg:flex">
             {items.map((item) => {
@@ -64,16 +77,24 @@ export const TopBar = ({ items, environment }: { items: NavItem[]; environment: 
               {environment}
             </span>
           )}
-          <AppLink href={PROFILE.contact.github} aria-label="GitHub" className={`${CELL} hidden sm:flex`}>
+          <AppLink href={github} aria-label="GitHub" className={`${CELL} hidden sm:flex`}>
             <Github className="h-4 w-4" />
           </AppLink>
-          <AppLink href={PROFILE.contact.linkedin} aria-label="LinkedIn" className={`${CELL} hidden sm:flex`}>
+          <AppLink href={linkedin} aria-label="LinkedIn" className={`${CELL} hidden sm:flex`}>
             <Linkedin className="h-4 w-4" />
           </AppLink>
+          <LocaleLink
+            locale={otherLocale}
+            aria-label={ui.switchLocale.label}
+            title={ui.switchLocale.label}
+            className={`${CELL} hud-label`}
+          >
+            {ui.switchLocale.short}
+          </LocaleLink>
           <button
             type="button"
             onClick={toggleTheme}
-            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            aria-label={theme === "dark" ? ui.lightTheme : ui.darkTheme}
             className={`${CELL} cursor-pointer`}
           >
             {theme === "dark" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
@@ -81,7 +102,7 @@ export const TopBar = ({ items, environment }: { items: NavItem[]; environment: 
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? ui.closeMenu : ui.openMenu}
             aria-expanded={open}
             className={`${CELL} cursor-pointer lg:hidden`}
           >
@@ -106,11 +127,11 @@ export const TopBar = ({ items, environment }: { items: NavItem[]; environment: 
             </a>
           ))}
           <div className="flex sm:hidden">
-            <AppLink href={PROFILE.contact.github} className="hud-label flex-1 px-4 py-4 text-muted hover:bg-ink hover:text-bg">
+            <AppLink href={github} className="hud-label flex-1 px-4 py-4 text-muted hover:bg-ink hover:text-bg">
               GitHub
             </AppLink>
             <AppLink
-              href={PROFILE.contact.linkedin}
+              href={linkedin}
               className="hud-label flex-1 border-l border-line px-4 py-4 text-muted hover:bg-ink hover:text-bg"
             >
               LinkedIn
