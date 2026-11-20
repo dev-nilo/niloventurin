@@ -45,6 +45,7 @@ describe("PROFILE resume facts", () => {
     const cbmes = profile.experience.find((job) => job.company.includes("CBMES"))!;
     const pvt = profile.experience.find((job) => job.company === "PVT Software")!;
     expect(profile.stats[0].value).toBe("6+");
+    expect(profile.stats[1].value).toBe("3+");
     expect(cbmes.highlights.join(" ")).toContain("SIAT");
     expect(profile.summary.join(" ")).toContain("SIAT");
     expect(profile.projects.map((p) => p.name)).toEqual(["Rotina", "Cat-modoro", "Squadra"]);

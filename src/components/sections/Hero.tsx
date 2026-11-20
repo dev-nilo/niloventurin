@@ -40,7 +40,7 @@ export const Hero = ({ locale }: { locale: Locale }) => {
           </Button>
         </div>
 
-        <dl className="mt-14 grid grid-cols-2 border-t border-l border-line sm:w-fit">
+        <dl className="mt-14 grid grid-cols-3 border-t border-l border-line sm:w-fit">
           {profile.stats.map((stat) => (
             <div key={stat.label} className="flex flex-col-reverse gap-1 border-r border-b border-line px-5 py-4 sm:px-8">
               <dt className="hud-label text-muted">{stat.label}</dt>
