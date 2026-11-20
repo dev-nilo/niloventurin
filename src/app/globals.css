@@ -85,9 +85,9 @@
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
-  /* Keeps descenders inside the mask without changing the line height. */
-  padding-block: 0.1em;
-  margin-block: -0.1em;
+  /* Keeps punctuation and descenders inside the mask without clipping them. */
+  padding: 0.1em 0.12em;
+  margin: -0.1em -0.12em;
 }
 
 .mask-inner {
